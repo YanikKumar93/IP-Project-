@@ -4,26 +4,37 @@ import numpy as np
 print("Welcome to The Survey analysis of the topic"
       "Job placement in various colleges around the world ")
 print ("The given report consists of the following dataset:"
-       "1. Aound 200 Universties"
-       "2. UG and PG placement of all the Universities"
-       "3. Placement percentage of each unversity"
-       "4. Number of males and females placed per college "
-       "5. Highest package obtained by a student of a particular university(in LPA) "
-       "6. Average package received per university (in LPA) "
-       "7. Count of the international and Domestic packages received by the college "
-       "8. Number of domains offered by a particular college "
-       "9. Location of the college"
+       "1.  Aound 200 Universties"
+       "2.  UG and PG placement of all the Universities"
+       "3.  Placement percentage of each unversity"
+       "4.  Number of males and females placed per college "
+       "5.  Highest package obtained by a student of a particular university(in LPA) "
+       "6.  Average package received per university (in LPA) "
+       "7.  Count of the international and Domestic packages received by the college "
+       "8.  Number of domains offered by a particular college "
+       "9.  Location of the college"
        "10. Top companies that visited the college for recruitment ")
 while True:
     print("How do you want to see your report :")
     print("1. Tabular format")
     print("2. Visual Representation")
+    print("3. Mathematical calculations ")
     print("****** Please enter the number of the choice of your wish ******")
     command_1 = int(input("Please enter your choice : "))
-    print()
     if command_1==1:
-        print()
+        print("What do you want to see from the table :"
+              "1. Details of a particular college"
+              "2. Details of a Group of columns")
+        print("****** Please enter the number of the choice of your wish ******")
+        command_2 = int(input("Please enter your choice "))
+        if command_2 == 1 :
+            Name_of_college = input("Please enter the name of the college : ")
+            Location = input("Please enter the location of the college : ")
+        elif command_2 == 2:
+            Number_of_columns = int(input("Please enter the number of columns you want to see : "))
     elif command_1 == 2:
+        print()
+    elif command_1 == 3:
         print()
     else:
         print("Sorry, But we cannot perform the entered task ")
