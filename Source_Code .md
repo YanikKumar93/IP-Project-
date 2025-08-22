@@ -23,6 +23,10 @@ while True:
     print()
     if command_1==1:
         print()
+    elif command_1 == 2:
+        print()
+    else:
+        print("Sorry, But we cannot perform the entered task ")
     break
 print("Hereby we have come to an end of the analysis of the job placement in various colleges\n")
 print("This Report is created by Aditi and Yanik Of Class XII A")
