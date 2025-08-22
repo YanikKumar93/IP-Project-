@@ -4,9 +4,9 @@ import numpy as np
 print("Welcome to The Survey analysis of the topic"
       "Job placement in various colleges around the world ")
 print ("The given report consists of the following dataset:"
-       "1.  Aound 200 Universties"
+       "1.  Around 200 Universities"
        "2.  UG and PG placement of all the Universities"
-       "3.  Placement percentage of each unversity"
+       "3.  Placement percentage of each university"
        "4.  Number of males and females placed per college "
        "5.  Highest package obtained by a student of a particular university(in LPA) "
        "6.  Average package received per university (in LPA) "
@@ -15,11 +15,12 @@ print ("The given report consists of the following dataset:"
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
 while True:
-    print("How do you want to see your report :")
+    print("How do you want to see your report :\n")
     print("1. Tabular format")
     print("2. Visual Representation")
-    print("3. Mathematical calculations ")
-    print("****** Please enter the number of the choice of your wish ******")
+    print("3. Mathematical calculations"
+          "4. View full table \n")
+    print("****** Please enter the number of the choice of your wish ******\n")
     command_1 = int(input("Please enter your choice : "))
     if command_1==1:
         print("What do you want to see from the table :"
@@ -32,6 +33,20 @@ while True:
             Location = input("Please enter the location of the college : ")
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
+            print("Please make the choice for the columns from the below options:"
+                  "1.  Highest Package"
+                  "2.  Domestic package"
+                  "3.  International offers"
+                  "4.  Placement percentage "
+                  "5.  Average Packages offered"
+                  "6.  Number of males placed"
+                  "7.  Number of Females placed"
+                  "8.  Number of domains present in the college "
+                  "9.  UG placement"
+                  "10. PG placement ")
+            print("****** Please enter the number of the choice of your wish ******")
+            for i in range(Number_of_columns):
+                print()
     elif command_1 == 2:
         print("What do you want to see :"
               "1. Single column report"
@@ -61,9 +76,9 @@ while True:
             elif Graph_command == 6:
                 print()
             else:
-                print("Please enter a valid choice")
+                print("Please enter a valid choice\n")
         elif command_3 == 2:
-            print("Please make the choice for the columns from the below options:"
+            print("Please make the choice for the columns from the below options:\n"
                   "1.  Highest Package"
                   "2.  Domestic package"
                   "3.  International offers"
@@ -73,12 +88,36 @@ while True:
                   "7.  Number of Females placed"
                   "8.  Number of domains present in the college "
                   "9.  UG placement"
-                  "10. PG placement ")
-            print("****** Please enter the number of the choice of your wish ******")
+                  "10. PG placement \n")
+            print("****** Please enter the number of the choice of your wish ******\n")
             no_column_input = int(input("Please enter the number of columns you want to opt for : "))
             for i in range(no_column_input):
                 print()
     elif command_1 == 3:
+        print("Which mathematical function do you want to perform : "
+              "1. Sum of values of a column"
+              "2. Average of a column"
+              "3. Maximum value of a column"
+              "4. Minimum value of a column"
+              "5. Median of a column"
+              "6. Mode of a column \n")
+        print("****** Please enter the number of the choice of your wish ******\n")
+        Maths_func_input = int(input("Please enter the number of columns you want to opt for : \n"))
+        if Maths_func_input == 1:
+            print()
+        elif Maths_func_input == 2:
+            print()
+        elif Maths_func_input == 3 :
+            print()
+        elif Maths_func_input == 4:
+            print()
+        elif Maths_func_input == 5:
+            print()
+        elif Maths_func_input == 6:
+            print()
+        else:
+            print("Please enter a valid choice")
+    elif command_1==4:
         print()
     else:
         print("Sorry, But we cannot perform the entered task ")
