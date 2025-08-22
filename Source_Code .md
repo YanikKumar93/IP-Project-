@@ -13,7 +13,7 @@ print ("The given report consists of the following dataset:"
        "7.  Count of the international and Domestic packages received by the college "
        "8.  Number of domains offered by a particular college "
        "9.  Location of the college"
-       "10. Top companies that visited the college for recruitment ")
+       "10. Top companies that visited the college for recruitment \n\n")
 while True:
     print("How do you want to see your report :")
     print("1. Tabular format")
@@ -33,7 +33,51 @@ while True:
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
     elif command_1 == 2:
-        print()
+        print("What do you want to see :"
+              "1. Single column report"
+              "2. Multi column comparison")
+        print("****** Please enter the number of the choice of your wish ******")
+        command_3 = int(input("Please enter your choice : "))
+        if command_3 == 1:
+            print("Which type of graph do you want see : "
+                  "1. Bar graph"
+                  "2, Scattered plot"
+                  "3. Line grpah"
+                  "4. Column graph"
+                  "5. Histogram"
+                  "6. Pie chart ")
+            print("****** Please enter the number of the choice of your wish ******")
+            Graph_command = int(input("Please enter your choice ;"))
+            if Graph_command ==1:
+                print()
+            elif Graph_command == 2:
+                print()
+            elif Graph_command == 3:
+                print()
+            elif Graph_command == 4:
+                print()
+            elif Graph_command == 5:
+                print()
+            elif Graph_command == 6:
+                print()
+            else:
+                print("Please enter a valid choice")
+        elif command_3 == 2:
+            print("Please make the choice for the columns from the below options:"
+                  "1.  Highest Package"
+                  "2.  Domestic package"
+                  "3.  International offers"
+                  "4.  Placement percentage "
+                  "5.  Average Packages offered"
+                  "6.  Number of males placed"
+                  "7.  Number of Females placed"
+                  "8.  Number of domains present in the college "
+                  "9.  UG placement"
+                  "10. PG placement ")
+            print("****** Please enter the number of the choice of your wish ******")
+            no_column_input = int(input("Please enter the number of columns you want to opt for : "))
+            for i in range(no_column_input):
+                print()
     elif command_1 == 3:
         print()
     else:
