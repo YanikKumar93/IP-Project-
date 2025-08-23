@@ -14,6 +14,7 @@ print ("The given report consists of the following dataset:"
        "8.  Number of domains offered by a particular college "
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
+Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\IP_project_Job_placement_in_various_colleges.csv")
 while True:
     print("How do you want to see your report :\n")
     print("1. Tabular format")
@@ -33,6 +34,7 @@ while True:
             Location = input("Please enter the location of the college : ")
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
+            # We have to order them according to the reindexing we will do (Replace at all the places it is used )
             print("Please make the choice for the columns from the below options:"
                   "1.  Highest Package"
                   "2.  Domestic package"
@@ -45,8 +47,10 @@ while True:
                   "9.  UG placement"
                   "10. PG placement ")
             print("****** Please enter the number of the choice of your wish ******")
+            list_columns = []
             for i in range(Number_of_columns):
-                print()
+                column_input = int(input("Please enter your choice of column :"))
+                list_columns = list_columns.append(column_input)
     elif command_1 == 2:
         print("What do you want to see :"
               "1. Single column report"
