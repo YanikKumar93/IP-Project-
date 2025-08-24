@@ -15,6 +15,7 @@ print ("The given report consists of the following dataset:"
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\IP_project_Job_placement_in_various_colleges.csv")
+Re_indexed_Main_Table = Main_Table.reindex(columns=[1,2,3,5,6,7,8,9,10,11,12,13,14])
 while True:
     print("How do you want to see your report :\n")
     print("1. Tabular format")
@@ -31,7 +32,9 @@ while True:
         command_2 = int(input("Please enter your choice "))
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
-            Location = input("Please enter the location of the college : ")
+            location = Main_Table.index(Name_of_college)
+            print("The details of the college ",Name_of_college," are as follows :-")
+            print(Main_Table.loc(location))
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
             # We have to order them according to the reindexing we will do (Replace at all the places it is used )
@@ -50,7 +53,31 @@ while True:
             list_columns = []
             for i in range(Number_of_columns):
                 column_input = int(input("Please enter your choice of column :"))
-                list_columns = list_columns.append(column_input)
+                if column_input == 1:
+                    list_columns = list_columns.append("")
+                elif column_input == 2:
+                    list_columns = list_columns.append("")
+                elif column_input == 3:
+                    list_columns = list_columns.append("")
+                elif column_input == 4:
+                    list_columns = list_columns.append("")
+                elif column_input == 5:
+                    list_columns = list_columns.append("")
+                elif column_input == 6:
+                    list_columns = list_columns.append("")
+                elif column_input == 7:
+                    list_columns = list_columns.append("")
+                elif column_input == 8:
+                    list_columns = list_columns.append("")
+                elif column_input == 9:
+                    list_columns = list_columns.append("")
+                elif column_input == 10:
+                    list_columns = list_columns.append("")
+                else:
+                    print("Please enter a valid choice")
+                    break
+            print("The choosen group of columns are : \n")
+            print(Main_Table.loc(list_columns))
     elif command_1 == 2:
         print("What do you want to see :"
               "1. Single column report"
@@ -82,6 +109,7 @@ while True:
             else:
                 print("Please enter a valid choice\n")
         elif command_3 == 2:
+            # We have to order them according to the reindexing we will do (Replace at all the places it is used )
             print("Please make the choice for the columns from the below options:\n"
                   "1.  Highest Package"
                   "2.  Domestic package"
