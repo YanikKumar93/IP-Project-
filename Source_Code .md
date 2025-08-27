@@ -79,9 +79,9 @@ while True:
             print("The choosen group of columns are : \n")
             print(Main_Table.loc(list_columns))
     elif command_1 == 2:
-        print("What do you want to see :"
+        print("What do you want to see in the form of graphs :"
               "1. Single column report"
-              "2. Multi column comparison")
+              "2. Comparison of two columns")
         print("****** Please enter the number of the choice of your wish ******")
         command_3 = int(input("Please enter your choice : "))
         if command_3 == 1:
@@ -134,23 +134,24 @@ while True:
               "5. Median of a column"
               "6. Mode of a column \n")
         print("****** Please enter the number of the choice of your wish ******\n")
-        Maths_func_input = int(input("Please enter the number of columns you want to opt for : \n"))
+        Maths_func_input = int(input("Please enter the column you want to opt for : \n"))
         if Maths_func_input == 1:
-            print()
+            print("The sum of the values of ",Maths_func_input," is :")
         elif Maths_func_input == 2:
-            print()
+            print("The average of the values of ",Maths_func_input," is :")
         elif Maths_func_input == 3 :
-            print()
+            print("The maximum of the values of ",Maths_func_input," is :")
         elif Maths_func_input == 4:
-            print()
+            print("The minimum of the values of ",Maths_func_input," is :")
         elif Maths_func_input == 5:
-            print()
+            print("The Mediann of the values of ",Maths_func_input," is :")
         elif Maths_func_input == 6:
-            print()
+            print("The Mode of the values of ",Maths_func_input," is :")
         else:
             print("Please enter a valid choice")
     elif command_1==4:
-        print()
+        print("The full table is : \n")
+        print(Main_Table)
     else:
         print("Sorry, But we cannot perform the entered task ")
     break
