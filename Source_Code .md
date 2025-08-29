@@ -14,15 +14,14 @@ print ("The given report consists of the following dataset:"
        "8.  Number of domains offered by a particular college "
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
-Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\IP_project_Job.csv")
-print(Main_Table)
+Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv")
 Re_indexed_Main_Table = Main_Table.reindex(columns=[1,2,3,5,6,7,8,9,10,11,12,13,14])
 while True:
     print("How do you want to see your report :\n")
     print("1. Tabular format")
     print("2. Visual Representation")
-    print("3. Mathematical calculations"
-          "4. View full table \n")
+    print("3. Mathematical calculations")
+    print("4. View full table ")
     print("****** Please enter the number of the choice of your wish ******\n")
     command_1 = int(input("Please enter your choice : "))
     if command_1==1:
