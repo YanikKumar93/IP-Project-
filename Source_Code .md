@@ -14,7 +14,8 @@ print ("The given report consists of the following dataset:"
        "8.  Number of domains offered by a particular college "
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
-Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\IP_project_Job_placement_in_various_colleges.csv")
+Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\IP_project_Job.csv")
+print(Main_Table)
 Re_indexed_Main_Table = Main_Table.reindex(columns=[1,2,3,5,6,7,8,9,10,11,12,13,14])
 while True:
     print("How do you want to see your report :\n")
