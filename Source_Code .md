@@ -24,12 +24,20 @@ while True:
     print("4. View full table ")
     print("****** Please enter the number of the choice of your wish ******\n")
     command_1 = int(input("Please enter your choice : "))
+    if command_1 != int:
+        print("Please enter a valid Choice")
+    else:
+        continue
     if command_1==1:
         print("What do you want to see from the table :"
               "1. Details of a particular college"
               "2. Details of a Group of columns")
         print("****** Please enter the number of the choice of your wish ******")
         command_2 = int(input("Please enter your choice "))
+        if command_2 != int:
+            print("Please enter a valid Choice")
+        else:
+            continue
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
             location = Main_Table.index(Name_of_college)
@@ -37,6 +45,10 @@ while True:
             print(Main_Table.loc(location))
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
+            if Number_of_columns != int:
+                print("Please enter a valid Choice")
+            else:
+                continue
             print("Please make the choice for the columns from the below options:"
                   "1.  Highest Package"
                   "2.  Domestic package"
@@ -54,6 +66,10 @@ while True:
             list_columns = ["Name od College"]
             for i in range(Number_of_columns):
                 column_input = int(input("Please enter your choice of column :"))
+                if column_input != int:
+                    print("Please enter a valid Choice")
+                else:
+                    continue
                 if column_input == 1:
                     list_columns = list_columns.append("Highest Package")
                 elif column_input == 2:
@@ -89,6 +105,10 @@ while True:
               "2. Comparison of two columns")
         print("****** Please enter the number of the choice of your wish ******")
         command_3 = int(input("Please enter your choice : "))
+        if command_3 != int:
+            print("Please enter a valid Choice")
+        else:
+            continue
         if command_3 == 1:
             print("Which type of graph do you want see : "
                   "1. Bar graph"
@@ -141,6 +161,10 @@ while True:
               "6. Mode of a column \n")
         print("****** Please enter the number of the choice of your wish ******\n")
         Maths_func_input = int(input("Please enter the column you want to opt for : \n"))
+        if Maths_func_input != int:
+            print("Please enter a valid Choice")
+        else:
+            continue
         if Maths_func_input == 1:
             print("The sum of the values of ",Maths_func_input," is :")
         elif Maths_func_input == 2:
