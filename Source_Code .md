@@ -32,46 +32,52 @@ while True:
         command_2 = int(input("Please enter your choice "))
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
+            location = Main_Table.index(Name_of_college)
             print("The details of the college ",Name_of_college," are as follows :-")
-            print(Main_Table.loc[Name_of_college])
+            print(Main_Table.loc(location))
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
-            # We have to order them according to the reindexing we will do (Replace at all the places it is used )
             print("Please make the choice for the columns from the below options:"
                   "1.  Highest Package"
                   "2.  Domestic package"
                   "3.  International offers"
-                  "4.  Placement percentage "
-                  "5.  Average Packages offered"
-                  "6.  Number of males placed"
-                  "7.  Number of Females placed"
-                  "8.  Number of domains present in the college "
-                  "9.  UG placement"
-                  "10. PG placement ")
+                  "4.  No. Of Males Placed "
+                  "5.  No. Of Females Placed"
+                  "6.  Average Package Offered"
+                  "7.  Job PLacement Percentage"
+                  "8.  Location "
+                  "9.  Companies Visited"
+                  "10. No. Of domains avaliable"
+                  "11. UG Placements"
+                  "12. PG Placements")
             print("****** Please enter the number of the choice of your wish ******")
-            list_columns = []
+            list_columns = ["Name od College"]
             for i in range(Number_of_columns):
                 column_input = int(input("Please enter your choice of column :"))
                 if column_input == 1:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Highest Package")
                 elif column_input == 2:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Domestic Package")
                 elif column_input == 3:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("International Package")
                 elif column_input == 4:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Nuber of Males Placed")
                 elif column_input == 5:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Number of Females Placed")
                 elif column_input == 6:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Average Package offered")
                 elif column_input == 7:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Job Placement Percentage")
                 elif column_input == 8:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Location")
                 elif column_input == 9:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Companies Visited")
                 elif column_input == 10:
-                    list_columns = list_columns.append("")
+                    list_columns = list_columns.append("Number of Domains Offered")
+                elif column_input == 11:
+                    list_columns = list_columns.append("UG Placements")
+                elif column_input == 12:
+                    list_columns =list_columns.append("PG Placements")
                 else:
                     print("Please enter a valid choice")
                     break
@@ -108,18 +114,19 @@ while True:
             else:
                 print("Please enter a valid choice\n")
         elif command_3 == 2:
-            # We have to order them according to the reindexing we will do (Replace at all the places it is used )
-            print("Please make the choice for the columns from the below options:\n"
+            print("Please make the choice for the columns from the below options:"
                   "1.  Highest Package"
                   "2.  Domestic package"
                   "3.  International offers"
-                  "4.  Placement percentage "
-                  "5.  Average Packages offered"
-                  "6.  Number of males placed"
-                  "7.  Number of Females placed"
-                  "8.  Number of domains present in the college "
-                  "9.  UG placement"
-                  "10. PG placement \n")
+                  "4.  No. Of Males Placed "
+                  "5.  No. Of Females Placed"
+                  "6.  Average Package Offered"
+                  "7.  Job PLacement Percentage"
+                  "8.  Location "
+                  "9.  Companies Visited"
+                  "10. No. Of domains avaliable"
+                  "11. UG Placements"
+                  "12. PG Placements")
             print("****** Please enter the number of the choice of your wish ******\n")
             no_column_input = int(input("Please enter the number of columns you want to opt for : "))
             for i in range(no_column_input):
