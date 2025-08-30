@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-print("Welcome to The Survey analysis of the topic"
-      "Job placement in various colleges around the world ")
+print("Welcome to The Survey Analysis on the topic"
+      "Job placement in Various Colleges Around the World ")
 print ("The given report consists of the following dataset:"
        "1.  Around 200 Universities"
        "2.  UG and PG placement of all the Universities"
