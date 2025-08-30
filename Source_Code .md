@@ -40,9 +40,8 @@ while True:
             continue
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
-            location = Main_Table.index(Name_of_college)
             print("The details of the college ",Name_of_college," are as follows :-")
-            print(Main_Table.loc(location))
+            print(Main_Table.loc[Name_of_college])
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
             if Number_of_columns != int:
@@ -63,7 +62,7 @@ while True:
                   "11. UG Placements"
                   "12. PG Placements")
             print("****** Please enter the number of the choice of your wish ******")
-            list_columns = ["Name od College"]
+            list_columns = ["Name of College"]
             for i in range(Number_of_columns):
                 column_input = int(input("Please enter your choice of column :"))
                 if column_input != int:
