@@ -14,7 +14,7 @@ print ("The given report consists of the following dataset:"
        "8.  Number of domains offered by a particular college "
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
-Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv")
+Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
 Re_indexed_Main_Table = Main_Table.reindex(columns=[1,2,3,5,6,7,8,9,10,11,12,13,14])
 while True:
     print("How do you want to see your report :\n")
@@ -32,9 +32,8 @@ while True:
         command_2 = int(input("Please enter your choice "))
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
-            location = Main_Table.index(Name_of_college)
             print("The details of the college ",Name_of_college," are as follows :-")
-            print(Main_Table.loc(location))
+            print(Main_Table.loc[Name_of_college])
         elif command_2 == 2:
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
             # We have to order them according to the reindexing we will do (Replace at all the places it is used )
