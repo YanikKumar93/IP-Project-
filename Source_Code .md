@@ -15,7 +15,6 @@ print ("The given report consists of the following dataset:"
        "9.  Location of the college"
        "10. Top companies that visited the college for recruitment \n\n")
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
-Re_indexed_Main_Table = Main_Table.reindex(columns=[1,2,3,5,6,7,8,9,10,11,12,13,14])
 while True:
     print("How do you want to see your report :\n")
     print("1. Tabular format")
@@ -49,16 +48,16 @@ while True:
             else:
                 continue
             print("Please make the choice for the columns from the below options:"
-                  "1.  Highest Package"
-                  "2.  Domestic package"
-                  "3.  International offers"
+                  "1.  Highest Package (LPA)"
+                  "2.  Domestic Package (LPA)"
+                  "3.  International Package (LPA)"
                   "4.  No. Of Males Placed "
                   "5.  No. Of Females Placed"
                   "6.  Average Package Offered"
                   "7.  Job PLacement Percentage"
-                  "8.  Location "
+                  "8.  Location"
                   "9.  Companies Visited"
-                  "10. No. Of domains avaliable"
+                  "10. No. Of Domains Offered"
                   "11. UG Placements"
                   "12. PG Placements")
             print("****** Please enter the number of the choice of your wish ******")
@@ -70,34 +69,34 @@ while True:
                 else:
                     continue
                 if column_input == 1:
-                    list_columns = list_columns.append("Highest Package")
+                     list_columns.append("Highest Package (LPA)")
                 elif column_input == 2:
-                    list_columns = list_columns.append("Domestic Package")
+                    list_columns.append("Domestic Package (LPA)")
                 elif column_input == 3:
-                    list_columns = list_columns.append("International Package")
+                    list_columns.append("International Package (LPA)")
                 elif column_input == 4:
-                    list_columns = list_columns.append("Nuber of Males Placed")
+                    list_columns.append("Nuber of Males Placed")
                 elif column_input == 5:
-                    list_columns = list_columns.append("Number of Females Placed")
+                    list_columns.append("Number of Females Placed")
                 elif column_input == 6:
-                    list_columns = list_columns.append("Average Package offered")
+                    list_columns.append("Average Package Offered")
                 elif column_input == 7:
-                    list_columns = list_columns.append("Job Placement Percentage")
+                    list_columns.append("Job Placement Percentage")
                 elif column_input == 8:
-                    list_columns = list_columns.append("Location")
+                    list_columns.append("Location")
                 elif column_input == 9:
-                    list_columns = list_columns.append("Companies Visited")
+                    list_columns.append("Companies Visited")
                 elif column_input == 10:
-                    list_columns = list_columns.append("Number of Domains Offered")
+                    list_columns.append("Number of Domains Offered")
                 elif column_input == 11:
-                    list_columns = list_columns.append("UG Placements")
+                    list_columns.append("UG Placements")
                 elif column_input == 12:
-                    list_columns =list_columns.append("PG Placements")
+                    list_columns.append("PG Placements")
                 else:
                     print("Please enter a valid choice")
                     break
             print("The choosen group of columns are : \n")
-            print(Main_Table.loc(list_columns))
+            print(Main_Table[list_columns])
     elif command_1 == 2:
         print("What do you want to see in the form of graphs :"
               "1. Single column report"
@@ -158,24 +157,42 @@ while True:
               "4. Minimum value of a column"
               "5. Median of a column"
               "6. Mode of a column \n")
-        print("****** Please enter the number of the choice of your wish ******\n")
-        Maths_func_input = int(input("Please enter the column you want to opt for : \n"))
+        Maths_func_input = int(input("Please enter the number of the choice of your wish:"))
         if Maths_func_input != int:
-            print("Please enter a valid Choice")
+            print("Please enter a valid choice")
         else:
             continue
+        print("Please make the choice for the columns from the below options:"
+                  "1.  Highest Package"
+                  "2.  Domestic package"
+                  "3.  International offers"
+                  "4.  No. Of Males Placed "
+                  "5.  No. Of Females Placed"
+                  "6.  Average Package Offered"
+                  "7.  Job PLacement Percentage"
+                  "8. No. Of domains avaliable"
+                  "9. UG Placements"
+                  "10. PG Placements")
+         print("****** Please enter the name of the choice of your wish ****** \n")
+        Column_input=int(input("Please enter the name of the column you opt for:"))
         if Maths_func_input == 1:
-            print("The sum of the values of ",Maths_func_input," is :")
+            print("The sum of the values of ",Column_input," is :")
+            print(Main_Table[Column_input].sum())
         elif Maths_func_input == 2:
-            print("The average of the values of ",Maths_func_input," is :")
+            print("The average of the values of ",Column_input," is :")
+            print(Main_Table[Column_input].mean())
         elif Maths_func_input == 3 :
-            print("The maximum of the values of ",Maths_func_input," is :")
+            print("The maximum of the values of ",Column_input," is :")
+            print(Main_Table[Column_input].max())
         elif Maths_func_input == 4:
-            print("The minimum of the values of ",Maths_func_input," is :")
+            print("The minimum of the values of "Column_input," is :")
+            print(Main_Table[Column_input].min())
         elif Maths_func_input == 5:
-            print("The Mediann of the values of ",Maths_func_input," is :")
+            print("The Median of the values of ",Column_input," is :")
+            print(Main_Table[Column_input].median())
         elif Maths_func_input == 6:
-            print("The Mode of the values of ",Maths_func_input," is :")
+            print("The Mode of the values of ",Column_input," is :")
+            print(Main_Table[Column_input].mode())
         else:
             print("Please enter a valid choice")
     elif command_1==4:
