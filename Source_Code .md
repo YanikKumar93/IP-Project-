@@ -23,18 +23,18 @@ while True:
     print("4. View full table ")
     print("****** Please enter the number of the choice of your wish ******\n")
     command_1 = int(input("Please enter your choice : "))
-    if command_1 != int:
+    if command_1 not in [1,2,3,4]:
         print("Please enter a valid Choice")
     else:
         continue
     if command_1==1:
         print("What do you want to see from the table :"
-              "1. Details of a particular college"
-              "2. Details of a Group of columns")
+              "1. Details of a particular College"
+              "2. Details of a Group of Columns")
         print("****** Please enter the number of the choice of your wish ******")
         command_2 = int(input("Please enter your choice "))
-        if command_2 != int:
-            print("Please enter a valid Choice")
+        if command_2 not in [1,2]:
+            print("Please enter a Valid Choice")
         else:
             continue
         if command_2 == 1 :
@@ -42,8 +42,21 @@ while True:
             print("The details of the college ",Name_of_college," are as follows :-")
             print(Main_Table.loc[Name_of_college])
         elif command_2 == 2:
+             print("Please make the choice for the columns from the below options:"
+                  "1.  Highest Package (LPA)"
+                  "2.  Domestic Package (LPA)"
+                  "3.  International Package (LPA)"
+                  "4.  No. Of Males Placed "
+                  "5.  No. Of Females Placed"
+                  "6.  Average Package Offered"
+                  "7.  Job PLacement Percentage"
+                  "8.  Location"
+                  "9.  Companies Visited"
+                  "10. No. Of Domains Offered"
+                  "11. UG Placements"
+                  "12. PG Placements")
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
-            if Number_of_columns != int:
+            if Number_of_columns not in [1,2,3,4,5,6,7,8,9,10,11,12]:
                 print("Please enter a valid Choice")
             else:
                 continue
@@ -64,7 +77,7 @@ while True:
             list_columns = ["Name of College"]
             for i in range(Number_of_columns):
                 column_input = int(input("Please enter your choice of column :"))
-                if column_input != int:
+                if column_input not in [1,2,3,4,5,6,7,8,9,10,11,12]:
                     print("Please enter a valid Choice")
                 else:
                     continue
@@ -75,7 +88,7 @@ while True:
                 elif column_input == 3:
                     list_columns.append("International Package (LPA)")
                 elif column_input == 4:
-                    list_columns.append("Nuber of Males Placed")
+                    list_columns.append("Number of Males Placed")
                 elif column_input == 5:
                     list_columns.append("Number of Females Placed")
                 elif column_input == 6:
@@ -103,7 +116,7 @@ while True:
               "2. Comparison of two columns")
         print("****** Please enter the number of the choice of your wish ******")
         command_3 = int(input("Please enter your choice : "))
-        if command_3 != int:
+        if command_3 not in [1,2]:
             print("Please enter a valid Choice")
         else:
             continue
@@ -111,7 +124,7 @@ while True:
             print("Which type of graph do you want see : "
                   "1. Bar graph"
                   "2, Scattered plot"
-                  "3. Line grpah"
+                  "3. Line graph"
                   "4. Column graph"
                   "5. Histogram"
                   "6. Pie chart ")
@@ -158,41 +171,43 @@ while True:
               "5. Median of a column"
               "6. Mode of a column \n")
         Maths_func_input = int(input("Please enter the number of the choice of your wish:"))
-        if Maths_func_input != int:
+        if Maths_func_input not in [1,2,3,4,5,6]:
             print("Please enter a valid choice")
         else:
             continue
         print("Please make the choice for the columns from the below options:"
-                  "1.  Highest Package"
-                  "2.  Domestic package"
-                  "3.  International offers"
-                  "4.  No. Of Males Placed "
-                  "5.  No. Of Females Placed"
+                  "1.  Highest Package (LPA)"
+                  "2.  Domestic Package (LPA)"
+                  "3.  International Offers (LPA)"
+                  "4.  Number Of Males Placed "
+                  "5.  Number Of Females Placed"
                   "6.  Average Package Offered"
-                  "7.  Job PLacement Percentage"
-                  "8. No. Of domains avaliable"
+                  "7. Job PLacement Percentage"
+                  "8. Number Of Domains Avaliable"
                   "9. UG Placements"
                   "10. PG Placements")
-         print("****** Please enter the name of the choice of your wish ****** \n")
-        Column_input=int(input("Please enter the name of the column you opt for:"))
+        print("****** Please enter the number of the choice of your wish ****** \n")
+        Column_input=int(input("Please enter the number of the column you opt for:"))
+        L1=['Name of College', 'Highest Package (LPA)', 'Domestic Package (LPA)', 'International Package (LPA)', 'Number of Males Placed', 'Number of Females Placed', 'Average Package Offered', 'Job Placement Percentage', 'Number of Domains Offered', 'UG Placements', 'PG Placements']
+        Column=L1[Column_input]
         if Maths_func_input == 1:
-            print("The sum of the values of ",Column_input," is :")
-            print(Main_Table[Column_input].sum())
+            print("The sum of the values of ",Column," is :")
+            print(Main_Table[Column].sum())
         elif Maths_func_input == 2:
-            print("The average of the values of ",Column_input," is :")
-            print(Main_Table[Column_input].mean())
+            print("The average of the values of ",Column," is :")
+            print(Main_Table[Column].mean())
         elif Maths_func_input == 3 :
-            print("The maximum of the values of ",Column_input," is :")
-            print(Main_Table[Column_input].max())
+            print("The maximum of the values of ",Column," is :")
+            print(Main_Table[Column].max())
         elif Maths_func_input == 4:
-            print("The minimum of the values of "Column_input," is :")
-            print(Main_Table[Column_input].min())
+            print("The minimum of the values of ",Column," is :")
+            print(Main_Table[Column].min())
         elif Maths_func_input == 5:
-            print("The Median of the values of ",Column_input," is :")
-            print(Main_Table[Column_input].median())
+            print("The Median of the values of ",Column," is :")
+            print(Main_Table[Column].median())
         elif Maths_func_input == 6:
-            print("The Mode of the values of ",Column_input," is :")
-            print(Main_Table[Column_input].mode())
+            print("The Mode of the values of ",Column," is :")
+            print(Main_Table[Column].mode())
         else:
             print("Please enter a valid choice")
     elif command_1==4:
