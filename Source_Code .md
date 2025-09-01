@@ -42,19 +42,6 @@ while True:
             print("The details of the college ",Name_of_college," are as follows :-")
             print(Main_Table.loc[Name_of_college])
         elif command_2 == 2:
-             print("Please make the choice for the columns from the below options:"
-                  "1.  Highest Package (LPA)"
-                  "2.  Domestic Package (LPA)"
-                  "3.  International Package (LPA)"
-                  "4.  No. Of Males Placed "
-                  "5.  No. Of Females Placed"
-                  "6.  Average Package Offered"
-                  "7.  Job PLacement Percentage"
-                  "8.  Location"
-                  "9.  Companies Visited"
-                  "10. No. Of Domains Offered"
-                  "11. UG Placements"
-                  "12. PG Placements")
             Number_of_columns = int(input("Please enter the number of columns you want to see : "))
             if Number_of_columns not in [1,2,3,4,5,6,7,8,9,10,11,12]:
                 print("Please enter a valid Choice")
@@ -73,7 +60,6 @@ while True:
                   "10. No. Of Domains Offered"
                   "11. UG Placements"
                   "12. PG Placements")
-            print("****** Please enter the number of the choice of your wish ******")
             list_columns = ["Name of College"]
             for i in range(Number_of_columns):
                 column_input = int(input("Please enter your choice of column :"))
@@ -130,6 +116,28 @@ while True:
                   "6. Pie chart ")
             print("****** Please enter the number of the choice of your wish ******")
             Graph_command = int(input("Please enter your choice ;"))
+            if command_1 not in [1, 2, 3, 4,5,6]:
+                print("Please enter a valid Choice")
+            else:
+                continue
+            print("Please make the choice for the columns from the below options:"
+                  "1.  Highest Package (LPA)"
+                  "2.  Domestic Package (LPA)"
+                  "3.  International Package (LPA)"
+                  "4.  No. Of Males Placed "
+                  "5.  No. Of Females Placed"
+                  "6.  Average Package Offered"
+                  "7.  Job PLacement Percentage"
+                  "8.  Location"
+                  "9.  Companies Visited"
+                  "10. No. Of Domains Offered"
+                  "11. UG Placements"
+                  "12. PG Placements")
+            Column_command_2 = int(input("Please enter the column from the list for which you want to see the graph : "))
+            if Column_command_2 not in [1, 2, 3, 4,5,6,7,8,9,10,11,12]:
+                print("Please enter a valid Choice")
+            else:
+                continue
             if Graph_command ==1:
                 print()
             elif Graph_command == 2:
@@ -188,7 +196,21 @@ while True:
                   "10. PG Placements")
         print("****** Please enter the number of the choice of your wish ****** \n")
         Column_input=int(input("Please enter the number of the column you opt for:"))
-        L1=['Name of College', 'Highest Package (LPA)', 'Domestic Package (LPA)', 'International Package (LPA)', 'Number of Males Placed', 'Number of Females Placed', 'Average Package Offered', 'Job Placement Percentage', 'Number of Domains Offered', 'UG Placements', 'PG Placements']
+        if Column_input not in [1, 2, 3, 4,5,6,7,8,9,10]:
+            print("Please enter a valid Choice")
+        else:
+            continue
+        L1=['Name of College',
+            'Highest Package (LPA)',
+            'Domestic Package (LPA)',
+            'International Package (LPA)',
+            'Number of Males Placed',
+            'Number of Females Placed',
+            'Average Package Offered',
+            'Job Placement Percentage',
+            'Number of Domains Offered',
+            'UG Placements',
+            'PG Placements']
         Column=L1[Column_input]
         if Maths_func_input == 1:
             print("The sum of the values of ",Column," is :")
