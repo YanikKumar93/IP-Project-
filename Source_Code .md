@@ -21,6 +21,7 @@ while True:
     print("2. Visual Representation")
     print("3. Mathematical calculations")
     print("4. View full table ")
+    print("5. Exit code")
     print("****** Please enter the number of the choice of your wish ******\n")
     command_1 = int(input("Please enter your choice : "))
     if command_1 not in [1,2,3,4]:
@@ -235,8 +236,10 @@ while True:
     elif command_1==4:
         print("The full table is : \n")
         print(Main_Table)
+    elif command_1 == 5:
+        print("Hereby we have come to an end of the analysis of the job placement in various colleges\n")
+        print("This Report is created by Aditi and Yanik Of Class XII A")
+        break
     else:
         print("Sorry, But we cannot perform the entered task ")
     break
-print("Hereby we have come to an end of the analysis of the job placement in various colleges\n")
-print("This Report is created by Aditi and Yanik Of Class XII A")
