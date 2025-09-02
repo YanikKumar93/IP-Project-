@@ -16,7 +16,7 @@ print ("The given report consists of the following dataset:\n"
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
 while True:
     print("How do you want to see your report :\n"
-          "1. Tabular format\n"\
+          "1. Tabular format\n"
           "2. Visual Representation\n "
           "3. Mathematical calculations\n "
           "4. To find a college from its location\n"
