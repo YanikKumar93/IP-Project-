@@ -72,7 +72,7 @@ while True:
                   "12. PG Placements\n ")
             list_columns = ["Name of College"]
             for i in range(Number_of_columns):
-                column_input = int(input("Please enter your choice of column :"))
+                column_input = input("Please enter your choice of column :")
                 if column_input not in [1,2,3,4,5,6,7,8,9,10,11,12]:
                     try:
                         int(column_input)
@@ -191,7 +191,7 @@ while True:
                   "11. UG Placements\n"
                   "12. PG Placements\n\n")
             print("****** Please enter the number of the choice of your wish ******\n\n")
-            no_column_input = int(input("Please enter the number of columns you want to opt for : "))
+            no_column_input = input("Please enter the number of columns you want to opt for : ")
             if no_column_input not in [1,2,3,4,5,6,7,8,9,10,11,12]:
                 try:
                     int(no_column_input)
