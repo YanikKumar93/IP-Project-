@@ -1,50 +1,41 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 print("Welcome to The Survey Analysis on the topic\n"
-      "\nJob placement in Various Colleges Around the World \n ")
-print ("The given report consists of the following dataset:\n "
-       "1.  Around 200 Universities\n "
-       "2.  UG and PG placement of all the Universities\n "
-       "3.  Placement percentage of each university\n "
-       "4.  Number of males and females placed per college \n "
-       "5.  Highest package obtained by a student of a particular university(in LPA) \n "
+      "\nJob placement in Various Colleges Around the World \n")
+print ("The given report consists of the following dataset:\n"
+       "1.  Around 200 Universities\n"
+       "2.  UG and PG placement of all the Universities\n"
+       "3.  Placement percentage of each university\n"
+       "4.  Number of males and females placed per college \n"
+       "5.  Highest package obtained by a student of a particular university(in LPA) \n"
        "6.  Average package received per university (in LPA) "
-       "7.  Count of the international and Domestic packages received by the college \n "
-       "8.  Number of domains offered by a particular college \n "
-       "9.  Location of the college\n "
+       "7.  Count of the international and Domestic packages received by the college \n"
+       "8.  Number of domains offered by a particular college \n"
+       "9.  Location of the college\n"
        "10. Top companies that visited the college for recruitment \n\n")
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
-
 while True:
     print("How do you want to see your report :\n"
           "1. Tabular format\n"\
           "2. Visual Representation\n "
           "3. Mathematical calculations\n "
-          "4. View full table \n "
-          "5. Exit code \n")
+          "4. To find a college from its location\n"
+          "5. To find the colleges visited by a particular company\n"
+          "6. View full table \n "
+          "7. Exit code \n")
     print("****** Please enter the number of the choice of your wish ****** ")
-    command_1 = input("Please enter your choice : ")
-    if command_1 not in [1,2,3,4]:
-        try:
-            int(command_1)
-        except:
-            print("Please enter a valid number")
-    else:
-        pass
+    command_1 = int(input("Please enter your choice : "))
     if command_1==1:
         print("What do you want to see from the table :\n "
               "1. Details of a particular College\n"
-              # Add upper command
               "2. Details of a Group of Columns\n\n")
         print("****** Please enter the number of the choice of your wish ******\n \n ")
         command_2 = input("Please enter your choice : ")
-        if command_2 not in [1,2]:
-            try:
-                int(command_2)
-            except:
-                print("Please enter a valid number")
-        else:
-            pass
+        try:
+            int(command_2)
+        except:
+            print("Please enter a valid number")
+            continue
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
             Name_of_college_renewed = Name_of_college.upper()
@@ -271,10 +262,30 @@ while True:
             print(Main_Table[Column].mode())
         else:
             print("Please enter a valid choice")
-    elif command_1==4:
+    elif command_1 == 4:
+        location_input = input("Please enter the location for which you want to search for a college : ")
+        location_input_new = location_input.upper()
+        location_list = []
+        for j in Main_Table["Location"][0:]:
+            if j in location_input_new[:] :
+                location_list.append(Main_Table.loc[:,"Name of College"])
+        Loaction_Series = pd.Series(data = location_list)
+        print("\nThe colleges in ",location_input," and nearby it are :\n\n")
+        print(Loaction_Series)
+    elif command_1 == 5:
+        Company_input = input("Please enter the company for which you want to check the colleges : ")
+        Company_input.upper()
+        list_company = []
+        for i in Main_Table["Companies Visited"][0:]:
+            if Company_input == i :
+                list_company.append(Main_Table.loc["Name of College"])
+        Comapny_College = pd . Series(data = list_company)
+        print("The names of the colleges in which the company ",Company_input," visited are :\n\n")
+        print(Comapny_College)
+    elif command_1==6:
         print("The full table is : \n\n\n")
         print(Main_Table)
-    elif command_1 == 5:
+    elif command_1 == 7:
         print("\n")
         print("Hereby we have come to an end of the analysis of the job placement in various colleges\n\n")
         print("This Report is created by Aditi and Yanik Of Class XII A")
