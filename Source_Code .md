@@ -14,6 +14,7 @@ print ("The given report consists of the following dataset:\n "
        "9.  Location of the college\n "
        "10. Top companies that visited the college for recruitment \n\n")
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
+
 while True:
     print("How do you want to see your report :\n"
           "1. Tabular format\n"\
@@ -46,8 +47,9 @@ while True:
             pass
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
+            Name_of_college_renewed = Name_of_college.upper()
             print("The details of the college ",Name_of_college," are as follows :-\n \n ")
-            print(Main_Table.loc[Name_of_college])
+            print(Main_Table.loc[Name_of_college_renewed])
         elif command_2 == 2:
             Number_of_columns = input("Please enter the number of columns you want to see : ")
             if Number_of_columns not in [1,2,3,4,5,6,7,8,9,10,11,12]:
