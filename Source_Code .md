@@ -14,28 +14,50 @@ print ("The given report consists of the following dataset:\n"
        "9.  Location of the college\n"
        "10. Top companies that visited the college for recruitment \n\n")
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
+def Input(user,defined_range):
+    try:
+        user_input = int(user)
+        if user_input in defined_range:
+            return user_input
+        else:
+            print("Please enter a valid choice from the given options\n")
+    except:
+        print("Please enter a valid integer choice from the given options\n")
+Choice_offered = ("Please make the choice for the columns from the below options:\n "
+                       "1.  Highest Package (LPA)\n"
+                       "2.  Domestic Package (LPA)\n"
+                       "3.  International Package (LPA)\n"
+                       "4.  No. Of Males Placed \n"
+                       "5.  No. Of Females Placed\n"
+                       "6.  Average Package Offered\n"
+                       "7.  Job PLacement Percentage\n"
+                       "8.  Location\n"
+                       "9.  Companies Visited\n"
+                       "10. No. Of Domains Offered\n"
+                       "11. UG Placements\n"
+                       "12. PG Placements\n")
+# Tasks left to be done
+# Ask for merging visual and tabular part
+# Optimization and representation
 while True:
     print("How do you want to see your report :\n"
           "1. Tabular format\n"
-          "2. Visual Representation\n "
-          "3. Mathematical calculations\n "
+          "2. Visual Representation\n"
+          "3. Mathematical calculations\n"
           "4. To find a college from its location\n"
           "5. To find the colleges visited by a particular company\n"
-          "6. View full table \n "
+          "6. View full table \n"
           "7. Exit code \n")
     print("****** Please enter the number of the choice of your wish ****** ")
-    command_1 = int(input("Please enter your choice : "))
+    command_1 = input("Please enter your choice : ")
+    command_1 = Input(command_1,[1,2,3,4,5,6,7])
     if command_1==1:
-        print("What do you want to see from the table :\n "
+        print("What do you want to see from the table :\n"
               "1. Details of a particular College\n"
               "2. Details of a Group of Columns\n\n")
-        print("****** Please enter the number of the choice of your wish ******\n \n ")
+        print("****** Please enter the number of the choice of your wish ******\n \n")
         command_2 = input("Please enter your choice : ")
-        try:
-            int(command_2)
-        except:
-            print("Please enter a valid number")
-            continue
+        command_2 = Input(command_2,[1,2])
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
             Name_of_college_renewed = Name_of_college.upper()
@@ -43,38 +65,12 @@ while True:
             print(Main_Table.loc[Name_of_college_renewed])
         elif command_2 == 2:
             Number_of_columns = input("Please enter the number of columns you want to see : ")
-            if Number_of_columns not in [1,2,3,4,5,6,7,8,9,10,11,12]:
-                try:
-                    int(Number_of_columns)
-                except:
-                    print("Please enter a valid number")
-            else:
-                pass
-            print("Please make the choice for the columns from the below options:\n "
-                  "1.  Highest Package (LPA)\n "
-                  "2.  Domestic Package (LPA)\n "
-                  "3.  International Package (LPA)\n "
-                  "4.  No. Of Males Placed \n "
-                  "5.  No. Of Females Placed\n "
-                  "6.  Average Package Offered\n "
-                  "7.  Job PLacement Percentage\n "
-                  "8.  Location\n "
-                  "9.  Companies Visited\n "
-                  "10. No. Of Domains Offered\n "
-                  "11. UG Placements\n "
-                  "12. PG Placements\n ")
+            Number_of_columns = Input(Number_of_columns,[1,2,3,4,5,6,7,8,9,10,11,12])
+            print(Choice_offered)
             list_columns = ["Name of College"]
             for i in range(Number_of_columns):
                 column_input = input("Please enter your choice of column :")
-                if column_input not in [1,2,3,4,5,6,7,8,9,10,11,12]:
-                    try:
-                        int(column_input)
-                    except:
-                        print("Please enter a valid number")
-                else:
-                    pass
-                if column_input not in [1,2,3,4,5,6,7,8,9,10,11,12]:
-                    print("Please enter a valid Choice")
+                column_input = Input(column_input,[1,2,3,4,5,6,7,8,9,10,11,12])
                 if column_input == 1:
                      list_columns.append("Highest Package (LPA)")
                 elif column_input == 2:
@@ -110,13 +106,7 @@ while True:
               "2. Comparison of two columns\n ")
         print("****** Please enter the number of the choice of your wish ******\n \n ")
         command_3 = input("Please enter your choice : ")
-        if command_3 not in [1,2]:
-            try:
-                int(command_3)
-            except:
-                print("Please enter a valid choice")
-        else:
-            pass
+        command_3 = Input(command_3,[1,2])
         if command_3 == 1:
             print("Which type of graph do you want see : \n "
                   "1. Bar graph\n "
@@ -127,34 +117,10 @@ while True:
                   "6. Pie chart\n  ")
             print("****** Please enter the number of the choice of your wish ******\n \n ")
             Graph_command = input("Please enter your choice ;")
-            if Graph_command not in [1, 2, 3, 4,5,6]:
-                try:
-                    int(Graph_command)
-                except:
-                    print("Please enter a valid number")
-            else:
-                pass
-            print("Please make the choice for the columns from the below options:\n "
-                  "1.  Highest Package (LPA)\n "
-                  "2.  Domestic Package (LPA)\n "
-                  "3.  International Package (LPA)\n "
-                  "4.  No. Of Males Placed\n  "
-                  "5.  No. Of Females Placed\n "
-                  "6.  Average Package Offered\n "
-                  "7.  Job PLacement Percentage\n "
-                  "8.  Location\n "
-                  "9.  Companies Visited\n "
-                  "10. No. Of Domains Offered\n "
-                  "11. UG Placements\n "
-                  "12. PG Placements\n \n ")
+            Graph_command = Input(Graph_command,[1,2,3,4,5,6])
+            print(Choice_offered)
             Column_command_2 = input("Please enter the column from the list for which you want to see the graph : ")
-            if Column_command_2 not in [1, 2, 3, 4,5,6,7,8,9,10,11,12]:
-                try:
-                    int(Column_command_2)
-                except:
-                    print("Please enter a valid number")
-            else:
-                pass
+            Column_command_2 = Input(Column_command_2,[1,2,3,4,5,6,7,8,9,10,11,12])
             if Graph_command ==1:
                 print()
             elif Graph_command == 2:
@@ -170,28 +136,10 @@ while True:
             else:
                 print("Please enter a valid choice\n")
         elif command_3 == 2:
-            print("Please make the choice for the columns from the below options:\n "
-                  "1.  Highest Package\n "
-                  "2.  Domestic package\n "
-                  "3.  International offers\n "
-                  "4.  No. Of Males Placed \n "
-                  "5.  No. Of Females Placed\n "
-                  "6.  Average Package Offered\n "
-                  "7.  Job PLacement Percentage\n"
-                  "8.  Location \n"
-                  "9.  Companies Visited\n"
-                  "10. No. Of domains avaliable\n"
-                  "11. UG Placements\n"
-                  "12. PG Placements\n\n")
+            print(Choice_offered)
             print("****** Please enter the number of the choice of your wish ******\n\n")
             no_column_input = input("Please enter the number of columns you want to opt for : ")
-            if no_column_input not in [1,2,3,4,5,6,7,8,9,10,11,12]:
-                try:
-                    int(no_column_input)
-                except:
-                    print("Please enter a valid number")
-            else:
-                pass
+            no_column_input = Input(no_column_input,[1,2,3,4,5,6,7,8,9,10,11,12])
             for i in range(no_column_input):
                 print("")
     elif command_1 == 3:
@@ -203,13 +151,7 @@ while True:
               "5. Median of a column\n"
               "6. Mode of a column \n\n")
         Maths_func_input = input("Please enter the number of the choice of your wish:")
-        if Maths_func_input not in [1,2,3,4,5,6]:
-            try:
-                int(Maths_func_input)
-            except:
-                print("Please enter a valid number")
-        else:
-            pass
+        Maths_func_input = Input(Maths_func_input,[1,2,3,4,5,6])
         print("Please make the choice for the columns from the below options:\n"
                   "1.  Highest Package (LPA)\n"
                   "2.  Domestic Package (LPA)\n"
@@ -223,13 +165,7 @@ while True:
                   "10. PG Placements\n\n")
         print("****** Please enter the number of the choice of your wish ****** \n\n")
         Column_input=input("Please enter the number of the column you opt for:")
-        if Column_input not in [1, 2, 3, 4,5,6,7,8,9,10]:
-            try:
-                int(Column_input)
-            except:
-                print("Please enter a valid number")
-        else:
-            pass
+        Column_input = Input(Column_input,[1,2,3,4,5,6,7,8,9,10])
         L1=['Name of College',
             'Highest Package (LPA)',
             'Domestic Package (LPA)',
@@ -266,15 +202,15 @@ while True:
         location_input = input("Please enter the location for which you want to search for a college : ")
         location_input_new = location_input.upper()
         location_list = []
-        for j in Main_Table["Location"][0:]:
-            if j in location_input_new[:] :
+        for j in Main_Table.iterrows():
+            if Main_Table["Location"] in location_input_new :
                 location_list.append(Main_Table.loc[:,"Name of College"])
         Loaction_Series = pd.Series(data = location_list)
         print("\nThe colleges in ",location_input," and nearby it are :\n\n")
         print(Loaction_Series)
     elif command_1 == 5:
         Company_input = input("Please enter the company for which you want to check the colleges : ")
-        Company_input.upper()
+        Company_input = Company_input.upper()
         list_company = []
         for i in Main_Table["Companies Visited"][0:]:
             if Company_input == i :
