@@ -58,6 +58,10 @@ while True:
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
             Name_of_college_renewed = Name_of_college.upper()
+            if Name_of_college_renewed in Main_Table.loc("Name of College"):
+                pass
+            else:
+                print("Please enter a valid name of the college\n")
             print("The details of the college ",Name_of_college," are as follows :-\n \n ")
             print(Main_Table.loc[Name_of_college_renewed])
         elif command_2 == 2:
@@ -241,22 +245,24 @@ while True:
         location_input = input("Please enter the location for which you want to search for a college : ")
         location_input_new = location_input.upper()
         location_list = []
-        for j in Main_Table.iterrows():
-            if Main_Table["Location"] in location_input_new :
-                location_list.append(Main_Table.loc[:,"Name of College"])
-        Loaction_Series = pd.Series(data = location_list)
-        print("\nThe colleges in ",location_input," and nearby it are :\n\n")
-        print(Loaction_Series)
+        for i in range(len(Main_Table)):
+            if location_input_new in Main_Table.loc[i, 'Location']:
+                y = Main_Table.loc[i, 'Name of College']
+                location_list.append(y)
+        location_list_series = pd.Series(location_list)
+        print("The college at the location ",location_input_new," are :-\n\n")
+        print(location_list_series)
     elif command_1 == 5:
         Company_input = input("Please enter the company for which you want to check the colleges : ")
         Company_input = Company_input.upper()
         list_company = []
-        for i in Main_Table["Companies Visited"][0:]:
-            if Company_input == i :
-                list_company.append(Main_Table.loc["Name of College"])
-        Comapny_College = pd . Series(data = list_company)
-        print("The names of the colleges in which the company ",Company_input," visited are :\n\n")
-        print(Comapny_College)
+        for i in range(len(Main_Table)):
+            if Company_input in Main_Table.loc[i, 'Companies Visited']:
+                x = Main_Table.loc[i, 'Name of College']
+                list_company.append(x)
+        list_company_series = pd.Series(list_company)
+        print("The company ",Company_input," visited the following colleges :-\n\n")
+        print(list_company_series)
     elif command_1==6:
         print("The full table is : \n\n\n")
         print(Main_Table)
