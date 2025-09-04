@@ -36,9 +36,6 @@ Choice_offered = ("Please make the choice for the columns from the below options
                        "10. No. Of Domains Offered\n"
                        "11. UG Placements\n"
                        "12. PG Placements\n")
-# Tasks left to be done
-# Ask for merging visual and tabular part
-# Optimization and representation
 while True:
     print("How do you want to see your report :\n"
           "1. Tabular format\n"
