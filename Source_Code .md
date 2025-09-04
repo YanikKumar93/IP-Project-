@@ -36,6 +36,9 @@ Choice_offered = ("Please make the choice for the columns from the below options
                        "10. No. Of Domains Offered\n"
                        "11. UG Placements\n"
                        "12. PG Placements\n")
+# Tasks left to be done
+# Ask for merging visual and tabular part
+# Optimization and representation
 while True:
     print("How do you want to see your report :\n"
           "1. Tabular format\n"
@@ -133,12 +136,65 @@ while True:
             else:
                 print("Please enter a valid choice\n")
         elif command_3 == 2:
-            print(Choice_offered)
-            print("****** Please enter the number of the choice of your wish ******\n\n")
             no_column_input = input("Please enter the number of columns you want to opt for : ")
             no_column_input = Input(no_column_input,[1,2,3,4,5,6,7,8,9,10,11,12])
+            print(Choice_offered)
+            print("****** Please enter the number of the choice of your wish ******\n\n")
+            List_columns = ['Name of College',
+                  'Highest Package (LPA)',
+                  'Domestic Package (LPA)',
+                  'International Package (LPA)',
+                  'Number of Males Placed',
+                  'Number of Females Placed',
+                  'Average Package Offered',
+                  'Job Placement Percentage',
+                  'Number of Domains Offered',
+                  'UG Placements',
+                  'PG Placements']
+            final_columns = ["Name of College"]
             for i in range(no_column_input):
-                print("")
+                column_input_1 = input("Please enter the column number: \n")
+                column_input_1 = Input(column_input_1,[1,2,3,4,5,6,7,8,9,10,11,12])
+                final_columns.append(List_columns[column_input_1])
+            print("The choosen columns are : \n\n")
+            print(Main_Table[final_columns])
+            graph = input("Do you want see the graph of the selected: \n\n"
+                          "1. Yes\n"
+                          "2. No\n")
+            graph = Input(graph,[1,2])
+            print("****** Please enter the number of the choice of your wish ******\n \n ")
+            if graph == 1:
+                print("Thanks for the confirmation ")
+                print("Which type of graph do you want see : \n "
+                      "1. Bar graph\n "
+                      "2, Scattered plot\n "
+                      "3. Line graph\n "
+                      "4. Column graph\n "
+                      "5. Histogram\n "
+                      "6. Pie chart\n  ")
+                print("****** Please enter the number of the choice of your wish ******\n \n ")
+                graph_main = input("Which type of graph do you want to see : \n\n")
+                graph_main = Input(graph_main,[1,2,3,4,5,6])
+                if graph_main == 1:
+                    for a in range(len(final_columns)):
+                        print()
+                elif graph_main == 2:
+                    for a in range(len(final_columns)):
+                        print()
+                elif graph_main == 3:
+                    for a in range(len(final_columns)):
+                        print()
+                elif graph_main == 4:
+                    for a in range(len(final_columns)):
+                        print()
+                elif graph_main == 5:
+                    for a in range(len(final_columns)):
+                        print()
+                elif graph_main == 6:
+                    for a in range(len(final_columns)):
+                        print()
+            elif graph ==2:
+                print("Okay!!!")
     elif command_1 == 3:
         print("Which mathematical function do you want to perform :\n "
               "1. Sum of values of a column\n"
@@ -163,18 +219,7 @@ while True:
         print("****** Please enter the number of the choice of your wish ****** \n\n")
         Column_input=input("Please enter the number of the column you opt for:")
         Column_input = Input(Column_input,[1,2,3,4,5,6,7,8,9,10])
-        L1=['Name of College',
-            'Highest Package (LPA)',
-            'Domestic Package (LPA)',
-            'International Package (LPA)',
-            'Number of Males Placed',
-            'Number of Females Placed',
-            'Average Package Offered',
-            'Job Placement Percentage',
-            'Number of Domains Offered',
-            'UG Placements',
-            'PG Placements']
-        Column=L1[Column_input]
+        Column=List_columns[Column_input]
         if Maths_func_input == 1:
             print("The sum of the values of ",Column," is :")
             print(Main_Table[Column].sum())
