@@ -8,12 +8,12 @@ print ("The given report consists of the following dataset:\n"
        "3.  Placement percentage of each university\n"
        "4.  Number of males and females placed per college \n"
        "5.  Highest package obtained by a student of a particular university(in LPA) \n"
-       "6.  Average package received per university (in LPA) "
+       "6.  Average package received per university (in LPA) \n"
        "7.  Count of the international and Domestic packages received by the college \n"
        "8.  Number of domains offered by a particular college \n"
        "9.  Location of the college\n"
        "10. Top companies that visited the college for recruitment \n\n")
-Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY.csv",index_col=0)
+Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY_1.csv")
 def Input(user,defined_range):
     try:
         user_input = int(user)
@@ -36,6 +36,9 @@ Choice_offered = ("Please make the choice for the columns from the below options
                        "10. No. Of Domains Offered\n"
                        "11. UG Placements\n"
                        "12. PG Placements\n")
+# Tasks left to be done
+# Ask for merging visual and tabular part
+# Optimization and representation
 while True:
     print("How do you want to see your report :\n"
           "1. Tabular format\n"
@@ -58,7 +61,7 @@ while True:
         if command_2 == 1 :
             Name_of_college = input("Please enter the name of the college : ")
             Name_of_college_renewed = Name_of_college.upper()
-            if Name_of_college_renewed in Main_Table.loc("Name of College"):
+            if Name_of_college_renewed in Main_Table.loc[:,"Name of College"]:
                 pass
             else:
                 print("Please enter a valid name of the college\n")
@@ -159,12 +162,13 @@ while True:
                 final_columns.append(List_columns[column_input_1])
             print("The choosen columns are : \n\n")
             print(Main_Table[final_columns])
-            graph = input("Do you want see the graph of the selected: \n\n"
+            print("Do you want see the graph of the selected: \n"
                           "1. Yes\n"
                           "2. No\n")
-            graph = Input(graph,[1,2])
-            print("****** Please enter the number of the choice of your wish ******\n \n ")
-            if graph == 1:
+            print("****** Please enter the number of the choice of your wish ******\n\n ")
+            graph_input = input("Please enter here :")
+            graph_input = Input(graph_input, [1, 2])
+            if graph_input == 1:
                 print("Thanks for the confirmation ")
                 print("Which type of graph do you want see : \n "
                       "1. Bar graph\n "
@@ -194,8 +198,8 @@ while True:
                 elif graph_main == 6:
                     for a in range(len(final_columns)):
                         print()
-            elif graph ==2:
-                print("Okay!!!")
+            elif graph_input ==2:
+                print("Okay!!!\n")
     elif command_1 == 3:
         print("Which mathematical function do you want to perform :\n "
               "1. Sum of values of a column\n"
@@ -222,25 +226,25 @@ while True:
         Column_input = Input(Column_input,[1,2,3,4,5,6,7,8,9,10])
         Column=List_columns[Column_input]
         if Maths_func_input == 1:
-            print("The sum of the values of ",Column," is :")
+            print("The sum of the values of ",Column," is :\n")
             print(Main_Table[Column].sum())
         elif Maths_func_input == 2:
-            print("The average of the values of ",Column," is :")
+            print("The average of the values of ",Column," is :\n")
             print(Main_Table[Column].mean())
         elif Maths_func_input == 3 :
-            print("The maximum of the values of ",Column," is :")
+            print("The maximum of the values of ",Column," is :\n")
             print(Main_Table[Column].max())
         elif Maths_func_input == 4:
-            print("The minimum of the values of ",Column," is :")
+            print("The minimum of the values of ",Column," is :\n")
             print(Main_Table[Column].min())
         elif Maths_func_input == 5:
-            print("The Median of the values of ",Column," is :")
+            print("The Median of the values of ",Column," is :\n")
             print(Main_Table[Column].median())
         elif Maths_func_input == 6:
-            print("The Mode of the values of ",Column," is :")
+            print("The Mode of the values of ",Column," is :\n")
             print(Main_Table[Column].mode())
         else:
-            print("Please enter a valid choice")
+            print("Please enter a valid choice\n")
     elif command_1 == 4:
         location_input = input("Please enter the location for which you want to search for a college : ")
         location_input_new = location_input.upper()
@@ -251,23 +255,23 @@ while True:
                 location_list.append(y)
         location_list_series = pd.Series(location_list)
         print("The college at the location ",location_input_new," are :-\n\n")
-        print(location_list_series)
+        print(location_list_series,"\n\n")
     elif command_1 == 5:
         Company_input = input("Please enter the company for which you want to check the colleges : ")
         Company_input = Company_input.upper()
         list_company = []
         for i in range(len(Main_Table)):
-            if Company_input in Main_Table.loc[i, 'Companies Visited']:
+            if Company_input in Main_Table.loc[i, 'Companies Visited'].split(', '):
                 x = Main_Table.loc[i, 'Name of College']
                 list_company.append(x)
         list_company_series = pd.Series(list_company)
-        print("The company ",Company_input," visited the following colleges :-\n\n")
-        print(list_company_series)
+        print("The company ", Company_input, " visited the following colleges :-\n\n")
+        print(list_company_series,"\n\n")
     elif command_1==6:
-        print("The full table is : \n\n\n")
+        print("The full table is : \n")
         print(Main_Table)
     elif command_1 == 7:
         print("\n")
-        print("Hereby we have come to an end of the analysis of the job placement in various colleges\n\n")
+        print("Hereby we have come to an end of the analysis of the job placement in various colleges")
         print("This Report is created by Aditi and Yanik Of Class XII A")
         break
