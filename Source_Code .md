@@ -62,7 +62,7 @@ while True:
                 pass
             else:
                 print("Please enter a valid name of the college\n")
-            print("The details of the college ",Name_of_college," are as follows :-\n \n ")
+            print("The details of the college ",Name_of_college," are as follows :-\n\n")
             print(Main_Table.loc[Name_of_college_renewed])
         elif command_2 == 2:
             Number_of_columns = input("Please enter the number of columns you want to see : ")
@@ -99,24 +99,44 @@ while True:
                 else:
                     print("Please enter a valid choice")
                     break
-            print("The choosen group of columns are : \n\n ")
+            print("The choosen group of columns are : \n\n")
             print(Main_Table[list_columns])
+            print("Do you want see the graph of the selected: \n"
+                  "1. Yes\n"
+                  "2. No\n")
+            print("****** Please enter the number of the choice of your wish ******\n\n")
+            graph_input = input("Please enter here :")
+            graph_input = Input(graph_input, [1, 2])
+            if graph_input == 1:
+                print("Thanks for the confirmation ")
+                print("Which type of graph do you want see : \n"
+                      "1. Bar graph\n"
+                      "2, Scattered plot\n"
+                      "3. Line graph\n"
+                      "4. Column graph\n"
+                      "5. Histogram\n"
+                      "6. Pie chart\n")
+                print("****** Please enter the number of the choice of your wish ******\n\n")
+                graph_main = input("Which type of graph do you want to see : \n\n")
+                graph_main = Input(graph_main, [1, 2, 3, 4, 5, 6])
+            elif graph_input == 2:
+                print("Okay !!!!\n")
     elif command_1 == 2:
-        print("What do you want to see in the form of graphs :\n "
-              "1. Single column report\n "
-              "2. Comparison of two columns\n ")
-        print("****** Please enter the number of the choice of your wish ******\n \n ")
+        print("What do you want to see in the form of graphs :\n"
+              "1. Single column report\n"
+              "2. Comparison of two columns\n")
+        print("****** Please enter the number of the choice of your wish ******\n\n")
         command_3 = input("Please enter your choice : ")
         command_3 = Input(command_3,[1,2])
         if command_3 == 1:
-            print("Which type of graph do you want see : \n "
-                  "1. Bar graph\n "
-                  "2, Scattered plot\n "
-                  "3. Line graph\n "
-                  "4. Column graph\n "
-                  "5. Histogram\n "
-                  "6. Pie chart\n  ")
-            print("****** Please enter the number of the choice of your wish ******\n \n ")
+            print("Which type of graph do you want see : \n"
+                  "1. Bar graph\n"
+                  "2, Scattered plot\n"
+                  "3. Line graph\n"
+                  "4. Column graph\n"
+                  "5. Histogram\n"
+                  "6. Pie chart\n")
+            print("****** Please enter the number of the choice of your wish ******\n\n")
             Graph_command = input("Please enter your choice ;")
             Graph_command = Input(Graph_command,[1,2,3,4,5,6])
             print(Choice_offered)
@@ -157,46 +177,35 @@ while True:
                 column_input_1 = input("Please enter the column number: \n")
                 column_input_1 = Input(column_input_1,[1,2,3,4,5,6,7,8,9,10,11,12])
                 final_columns.append(List_columns[column_input_1])
-            print("The choosen columns are : \n\n")
-            print(Main_Table[final_columns])
-            print("Do you want see the graph of the selected: \n"
-                          "1. Yes\n"
-                          "2. No\n")
-            print("****** Please enter the number of the choice of your wish ******\n\n ")
-            graph_input = input("Please enter here :")
-            graph_input = Input(graph_input, [1, 2])
-            if graph_input == 1:
-                print("Thanks for the confirmation ")
-                print("Which type of graph do you want see : \n "
-                      "1. Bar graph\n "
-                      "2, Scattered plot\n "
-                      "3. Line graph\n "
-                      "4. Column graph\n "
-                      "5. Histogram\n "
-                      "6. Pie chart\n  ")
-                print("****** Please enter the number of the choice of your wish ******\n \n ")
-                graph_main = input("Which type of graph do you want to see : \n\n")
-                graph_main = Input(graph_main,[1,2,3,4,5,6])
-                if graph_main == 1:
-                    for a in range(len(final_columns)):
-                        print()
-                elif graph_main == 2:
-                    for a in range(len(final_columns)):
-                        print()
-                elif graph_main == 3:
-                    for a in range(len(final_columns)):
-                        print()
-                elif graph_main == 4:
-                    for a in range(len(final_columns)):
-                        print()
-                elif graph_main == 5:
-                    for a in range(len(final_columns)):
-                        print()
-                elif graph_main == 6:
-                    for a in range(len(final_columns)):
-                        print()
-            elif graph_input ==2:
-                print("Okay!!!\n")
+            print("Thanks for the confirmation")
+            print("Which type of graph do you want see : \n"
+                    "1. Bar graph\n"
+                    "2, Scattered plot\n"
+                    "3. Line graph\n"
+                    "4. Column graph\n"
+                    "5. Histogram\n"
+                    "6. Pie chart\n")
+            print("****** Please enter the number of the choice of your wish ******\n \n ")
+            graph_main = input("Which type of graph do you want to see : \n\n")
+            graph_main = Input(graph_main,[1,2,3,4,5,6])
+            if graph_main == 1:
+                for a in range(len(final_columns)):
+                    print()
+            elif graph_main == 2:
+                for a in range(len(final_columns)):
+                    print()
+            elif graph_main == 3:
+                for a in range(len(final_columns)):
+                    print()
+            elif graph_main == 4:
+                for a in range(len(final_columns)):
+                    print()
+            elif graph_main == 5:
+                for a in range(len(final_columns)):
+                    print()
+            elif graph_main == 6:
+                for a in range(len(final_columns)):
+                    print()
     elif command_1 == 3:
         print("Which mathematical function do you want to perform :\n "
               "1. Sum of values of a column\n"
@@ -221,6 +230,7 @@ while True:
         print("****** Please enter the number of the choice of your wish ****** \n\n")
         Column_input=input("Please enter the number of the column you opt for:")
         Column_input = Input(Column_input,[1,2,3,4,5,6,7,8,9,10])
+        List_columns = []
         Column=List_columns[Column_input]
         if Maths_func_input == 1:
             print("The sum of the values of ",Column," is :\n")
