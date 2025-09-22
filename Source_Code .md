@@ -3,16 +3,16 @@ import pandas as pd
 print("Welcome to The Survey Analysis on the topic\n"
       "\nJob placement in Various Colleges Around the World \n")
 print ("The given report consists of the following dataset:\n"
-       "1.  Around 200 Universities\n"
-       "2.  UG and PG placement of all the Universities\n"
-       "3.  Placement percentage of each university\n"
-       "4.  Number of males and females placed per college \n"
-       "5.  Highest package obtained by a student of a particular university(in LPA) \n"
-       "6.  Average package received per university (in LPA) \n"
-       "7.  Count of the international and Domestic packages received by the college \n"
-       "8.  Number of domains offered by a particular college \n"
-       "9.  Location of the college\n"
-       "10. Top companies that visited the college for recruitment \n\n")
+       "\t\t1.  Around 200 Universities\n"
+       "\t\t2.  UG and PG placement of all the Universities\n"
+       "\t\t3.  Placement percentage of each university\n"
+       "\t\t4.  Number of males and females placed per college \n"
+       "\t\t5.  Highest package obtained by a student of a particular university(in LPA) \n"
+       "\t\t6.  Average package received per university (in LPA) \n"
+       "\t\t7.  Count of the international and Domestic packages received by the college \n"
+       "\t\t8.  Number of domains offered by a particular college \n"
+       "\t\t9.  Location of the college\n"
+       "\t\t10. Top companies that visited the college for recruitment \n\n")
 Main_Table= pd.read_csv("C:\\Users\ADMIN\Desktop\IP\TRY_1.csv")
 def Input(user,defined_range):
     try:
@@ -24,34 +24,34 @@ def Input(user,defined_range):
     except:
         print("Please enter a valid integer choice from the given options\n")
 Choice_offered = ("Please make the choice for the columns from the below options:\n "
-                       "1.  Highest Package (LPA)\n"
-                       "2.  Domestic Package (LPA)\n"
-                       "3.  International Package (LPA)\n"
-                       "4.  No. Of Males Placed \n"
-                       "5.  No. Of Females Placed\n"
-                       "6.  Average Package Offered\n"
-                       "7.  Job PLacement Percentage\n"
-                       "8.  Location\n"
-                       "9.  Companies Visited\n"
-                       "10. No. Of Domains Offered\n"
-                       "11. UG Placements\n"
-                       "12. PG Placements\n")
+                       "\t\t1.  Highest Package (LPA)\n"
+                       "\t\t2.  Domestic Package (LPA)\n"
+                       "\t\t3.  International Package (LPA)\n"
+                       "\t\t4.  No. Of Males Placed \n"
+                       "\t\t5.  No. Of Females Placed\n"
+                       "\t\t6.  Average Package Offered\n"
+                       "\t\t7.  Job PLacement Percentage\n"
+                       "\t\t8.  Location\n"
+                       "\t\t9.  Companies Visited\n"
+                       "\t\t10. No. Of Domains Offered\n"
+                       "\t\t11. UG Placements\n"
+                       "\t\t12. PG Placements\n")
 while True:
     print("How do you want to see your report :\n"
-          "1. Data of colleges\n"
-          "2. Visual Representation\n"
-          "3. Mathematical calculations\n"
-          "4. To find a college from its location\n"
-          "5. To find the colleges visited by a particular company\n"
-          "6. View full table \n"
-          "7. Exit code \n")
+          "\t\t1. Data of colleges\n"
+          "\t\t2. Visual Representation\n"
+          "\t\t3. Mathematical calculations\n"
+          "\t\t4. To find a college from its location\n"
+          "\t\t5. To find the colleges visited by a particular company\n"
+          "\t\t6. View full table \n"
+          "\t\t7. Exit code \n")
     print("****** Please enter the number of the choice of your wish ****** ")
     command_1 = input("Please enter your choice : ")
     command_1 = Input(command_1,[1,2,3,4,5,6,7])
     if command_1==1:
         print("What do you want to see from the table :\n"
-              "1. Details of a particular College\n"
-              "2. Details of a Group of Columns\n\n")
+              "\t\t1. Details of a particular College\n"
+              "\t\t2. Details of a Group of Columns\n\n")
         print("****** Please enter the number of the choice of your wish ******\n \n")
         command_2 = input("Please enter your choice : ")
         command_2 = Input(command_2,[1,2])
@@ -103,8 +103,8 @@ while True:
             print(Main_Table[list_columns])
             if Number_of_columns == 1:
                 print("Do you want see the graph of the selected: \n"
-                    "1. Yes\n"
-                    "2. No\n")
+                    "\t\t1. Yes\n"
+                    "\t\t2. No\n")
                 print("****** Please enter the number of the choice of your wish ******\n\n")
                 graph_input = input("Please enter here :")
                 graph_input = Input(graph_input, [1, 2])
@@ -204,14 +204,6 @@ while True:
                             "PG Placements"]
         List_columns_selected = []
         List_columns_selected = List_columns_selected.append(List_columns_new[Column_command_2 - 1])
-        print("Which type of graph do you want see : \n"
-              "\t\t1. Bar graph\n"
-              "\t\t2, Scattered plot\n"
-              "\t\t3. Line graph\n"
-              "\t\t5. Histogram\n")
-        print("****** Please enter the number of the choice of your wish ******\n\n")
-        Graph_command = input("Please enter your choice ;")
-        Graph_command = Input(Graph_command, [1, 2, 3, 4, 5, 6])
         if Column_command_2 !=8:
             print("For which colleges do you want to see the graph :\n"
                   "\t\t1.Top colleges\n"
@@ -221,9 +213,9 @@ while True:
             College_option_1 = input("Please enter the number of your choice :")
             College_option_1 = Input(College_option_1, [1, 2, 3])
             print("Which type of graph do you want see : \n"
-                  "\t\t1. Bar graph\n"
-                  "\t\t2, Scattered plot\n"
-                  "\t\t3. Line graph\n")
+                  "\t\t 1. Bar graph\n"
+                  "\t\t 2. Scattered plot\n"
+                  "\t\t 3. Line graph\n")
             print("****** Please enter the number of the choice of your wish ******\n\n")
             graph_main_1 = input("Which type of graph do you want to see : \n\n")
             graph_main_1 = Input(graph_main_1, [1, 2, 3])
@@ -284,25 +276,25 @@ while True:
                     print("Invalid Choice")
     elif command_1 == 3:
         print("Which mathematical function do you want to perform :\n "
-              "1. Sum of values of a column\n"
-              "2. Average of a column\n"
-              "3. Maximum value of a column\n"
-              "4. Minimum value of a column\n"
-              "5. Median of a column\n"
-              "6. Mode of a column \n\n")
+              "\t\t1. Sum of values of a column\n"
+              "\t\t2. Average of a column\n"
+              "\t\t3. Maximum value of a column\n"
+              "\t\t4. Minimum value of a column\n"
+              "\t\t5. Median of a column\n"
+              "\t\t6. Mode of a column \n\n")
         Maths_func_input = input("Please enter the number of the choice of your wish:")
         Maths_func_input = Input(Maths_func_input,[1,2,3,4,5,6])
         print("Please make the choice for the columns from the below options:\n"
-                  "1.  Highest Package (LPA)\n"
-                  "2.  Domestic Package (LPA)\n"
-                  "3.  International Offers (LPA)\n"
-                  "4.  Number Of Males Placed\n"
-                  "5.  Number Of Females Placed\n"
-                  "6.  Average Package Offered\n"
-                  "7. Job Placement Percentage\n"
-                  "8. Number Of Domains Avaliable\n"
-                  "9. UG Placements\n"
-                  "10. PG Placements\n\n")
+                  "\t\t1.  Highest Package (LPA)\n"
+                  "\t\t2.  Domestic Package (LPA)\n"
+                  "\t\t3.  International Offers (LPA)\n"
+                  "\t\t4.  Number Of Males Placed\n"
+                  "\t\t5.  Number Of Females Placed\n"
+                  "\t\t6.  Average Package Offered\n"
+                  "\t\t7. Job Placement Percentage\n"
+                  "\t\t8. Number Of Domains Avaliable\n"
+                  "\t\t9. UG Placements\n"
+                  "\t\t10. PG Placements\n\n")
         print("****** Please enter the number of the choice of your wish ****** \n\n")
         Column_input=input("Please enter the number of the column you opt for:")
         Column_input = Input(Column_input,[1,2,3,4,5,6,7,8,9,10])
@@ -354,7 +346,7 @@ while True:
         print("The full table is : \n")
         print(Main_Table)
     elif command_1 == 7:
-        print("\n")
+        print("\n\n\n")
         print("Hereby we have come to an end of the analysis of the job placement in various colleges")
         print("This Report is created by Aditi and Yanik Of Class XII A")
         break
