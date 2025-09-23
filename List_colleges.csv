@@ -1,4 +1,4 @@
-?S. No.,Name of College,Year,Highest Package (LPA),Domestic Package (LPA),International Package (LPA),Number of Males Placed,Number of Females Placed,Average Package Offered,Job Placement Percentage,Location,Companies Visited,Number of Domains Offered,UG Placements,PG Placements
+S. No.,Name of College,Year,Highest Package (LPA),Domestic Package (LPA),International Package (LPA),Number of Males Placed,Number of Females Placed,Average Package Offered,Job Placement Percentage,Location,Companies Visited,Number of Domains Offered,UG Placements,PG Placements
 1,IIT BOMBAY,2024,150,150,0,650,250,20,95,MUMBAI,"GOOGLE, MICROSOFT, GOLDMAN SACHS, UBER",12,700,200
 2,IIT DELHI,2024,200,180,20,700,300,22,96,DELHI,"AMAZON, FLIPKART, INTEL, BCG",14,750,250
 3,IIT MADRAS,2024,130,130,0,600,200,19,94,CHENNAI,"QUALCOMM, NVIDIA, DELOITTE",13,650,150
@@ -200,3 +200,4 @@
 199,UNIVERSITY OF DUNDEE,2024,36,28,36,220,90,11,64,UK,"AMAZON, EY, PWC",8,170,130
 200,UNIVERSITY OF STIRLING,2024,34,27,34,200,80,10,63,UK,"GOOGLE, HSBC, EY",8,150,110
 201,UNIVERSITY OF ESSEX,2024,32,26,32,180,70,9,62,UK,"INFOSYS, EY, DELOITTE",8,130,100
+
