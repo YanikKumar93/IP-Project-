@@ -14,6 +14,7 @@ print("The given report consists of the following dataset:\n"
       "\t\t9.  Location of the college\n"
       "\t\t10. Top companies that visited the college for recruitment \n\n")
 Main_Table = pd.read_csv("C:\\Users\ADMIN\Desktop\IP\List_colleges.csv")
+Main_Table=Main_Table.drop("S. No.",axis=1)
 def Input(user, defined_range):
     try:
         user_input = int(user)
@@ -62,10 +63,62 @@ while True:
                     if command_2 == 1:
                         Name_of_college = input("Please enter the name of the college : ")
                         Name_of_college_renewed = Name_of_college.upper()
-                        if Name_of_college_renewed in Main_Table.loc[:, "Name of College"]:
+                        if Name_of_college_renewed in Main_Table["Name of College"].values:
                             print("The details of the college ", Name_of_college, " are as follows :-\n\n")
-                            print(Main_Table[Main_Table["Name of College"] == Name_of_college_renewed].squeeze().drop(
-                                "S. No."), "\n")
+                            pd.set_option('display.max_columns', None)
+                            print(Main_Table[Main_Table["Name of College"] == Name_of_college_renewed], "\n")
+                            
+                            print("Do you want see the graph of the selected: \n"
+                                          "\t\t1. Yes\n"
+                                          "\t\t2. No\n")
+                            print("****** Please enter the number of the choice of your wish ******\n\n")
+                            graph_input = input("Please enter here :")
+                            graph_input = Input(graph_input, [1, 2])
+                            if isinstance(graph_input, int):
+                                if graph_input == 1:
+                                    print("Thanks for the confirmation ")
+                                    Number_of_columns=int(input("No. of columns you want to see"))
+                                    list_columns=[]
+                                    for i in range(Number_of_columns):
+                                        column_input = input(f"Please enter your choice of column {i+1} :")
+                                        column_input = Input(column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+                                        if isinstance(column_input, int):
+                                            if column_input == 1:
+                                                list_columns.append("Highest Package (LPA)")
+                                            elif column_input == 2:
+                                                list_columns.append("Domestic Package (LPA)")
+                                            elif column_input == 3:
+                                                list_columns.append("International Package (LPA)")
+                                            elif column_input == 4:
+                                                list_columns.append("Number of Males Placed")
+                                            elif column_input == 5:
+                                                list_columns.append("Number of Females Placed")
+                                            elif column_input == 6:
+                                                list_columns.append("Average Package Offered")
+                                            elif column_input == 7:
+                                                list_columns.append("Job Placement Percentage")
+                                            elif column_input == 8:
+                                                list_columns.append("Location")
+                                            elif column_input == 9:
+                                                list_columns.append("Companies Visited")
+                                            elif column_input == 10:
+                                                list_columns.append("Number of Domains Offered")
+                                            elif column_input == 11:
+                                                list_columns.append("UG Placements")
+                                            elif column_input == 12:
+                                                list_columns.append("PG Placements")
+                                        else:
+                                            print("Please enter a valid choice")
+                                            continue
+                            values=[]
+                            for i in list_columns:
+                                values.append(Main_Table.loc[Main_Table["Name of College"] == Name_of_college_renewed, i].values.squeeze())
+                            print(l3)
+                            mp.bar(list_columns,values)
+                            mp.title(Name_of_college)
+                            mp.xlabel("Data")
+                            mp.ylabel("Values")
+                            mp.show()                        
                         else:
                             print("Please enter a valid name of the college\n")
                     elif command_2 == 2:
@@ -331,7 +384,7 @@ while True:
                                         list_custom_rows_1.append(y)
                             if graph_main_1 == 1:
                                 mp.bar(list_custom_rows_1, Main_Table_sorted_new_1[List_columns_selected[0]])
-                                mp.title("")
+                                mp.title(f"Graph of: User selected colleges VS {List_columns_selected[0}")
                                 mp.xlabel("")
                                 mp.ylabel("")
                                 mp.show()
