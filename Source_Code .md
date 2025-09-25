@@ -77,7 +77,7 @@ while True:
                         print(Choice_offered)
                         list_columns = ["Name of College"]
                         for i in range(Number_of_columns_1):
-                            column_input = input("Please enter your choice of column :")
+                            column_input = input(f"Please enter your choice of column {i+1} :")
                             column_input = Input(column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
                             if isinstance(column_input, int):
                                 if column_input == 1:
@@ -107,18 +107,19 @@ while True:
                                 else:
                                     print("Please enter a valid choice")
                                     continue
-                                print("The choosen group of columns are : \n\n")
-                                print(Main_Table[list_columns])
+                        print("The choosen group of columns are :",list_columns," \n\n")
+                        pd.set_option('display.max_columns', None)
+                        print(Main_Table[list_columns])
                         if Number_of_columns_1 == 1:
-                            print("Do you want see the graph of the selected: \n"
-                                  "\t\t1. Yes\n"
-                                  "\t\t2. No\n")
-                            print("****** Please enter the number of the choice of your wish ******\n\n")
-                            graph_input = input("Please enter here :")
-                            graph_input = Input(graph_input, [1, 2])
-                            if isinstance(graph_input, int):
-                                if graph_input == 1:
-                                    if column_input != 8:
+                            if column_input in [1,2,3,4,5,6,7,10,11,12]:
+                                print("Do you want see the graph of the selected: \n"
+                                      "\t\t1. Yes\n"
+                                      "\t\t2. No\n")
+                                print("****** Please enter the number of the choice of your wish ******\n\n")
+                                graph_input = input("Please enter here :")
+                                graph_input = Input(graph_input, [1, 2])
+                                if isinstance(graph_input, int):
+                                    if graph_input == 1:
                                         print("Thanks for the confirmation ")
                                         print("For which colleges do you want to see the graph :\n"
                                               "\t\t1.Top colleges\n"
@@ -137,53 +138,53 @@ while True:
                                         Main_Table_sorted = Main_Table.sort_values(by=list_columns[-1], ascending=True)
                                         if College_option == 1:
                                             top_rows = input(
-                                                "Please enter the rows from the top you want to opt for : ")
+                                                "Please enter the no. of rows from the top you want to opt for : ")
                                             top_rows = Input(top_rows, range(1, 203))
-                                            series = Main_Table["Name of College"].head(top_rows)
+                                            series = Main_Table_sorted["Name of College"].head(top_rows)
                                             list_college_top_1 = series.tolist()
                                             if graph_main == 1:
-                                                mp.bar(X=list_college_top_1, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel('')
-                                                mp.ylabel("")
+                                                mp.bar(list_college_top_1,Main_Table_sorted[list_columns[-1]].head(top_rows))
+                                                mp.title(f"{list_columns[-1]} of top {top_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             elif graph_main == 2:
-                                                mp.scatter(X=list_college_top_1, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel('')
-                                                mp.ylabel("")
+                                                mp.scatter(list_college_top_1,Main_Table_sorted[list_columns[-1]].head(top_rows))
+                                                mp.title(f"{list_columns[-1]} of top {top_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             elif graph_main == 3:
-                                                mp.plot(X=list_college_top_1, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel("")
-                                                mp.ylabel("")
+                                                mp.plot(list_college_top_1,Main_Table_sorted[list_columns[-1]].head(top_rows))
+                                                mp.title(f"{list_columns[-1]} of top {top_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             else:
                                                 print("Invalid Choice")
                                         elif College_option == 2:
                                             bottom_rows = input(
-                                                "Please enter the rows from the bottom you want to opt for :")
+                                                "Please enter the no. of rows from the bottom you want to opt for :")
                                             bottom_rows = Input(bottom_rows, range(1, 203))
-                                            sries_tail = Main_Table["Name of College"].tail(bottom_rows)
-                                            list_college_bottom = sries_tail.tolist()
+                                            series_tail = Main_Table_sorted["Name of College"].tail(bottom_rows)
+                                            list_college_bottom = series_tail.tolist()
                                             if graph_main == 1:
-                                                mp.bar(X=list_college_bottom, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel("")
-                                                mp.ylabel("")
+                                                mp.bar(list_college_top_1,Main_Table_sorted[list_columns[-1]].tail(bottom_rows))
+                                                mp.title(f"{list_columns[-1]} of bottom {bottom_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             elif graph_main == 2:
-                                                mp.scatter(X=list_college_bottom, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel("")
-                                                mp.ylabel("")
+                                                mp.scatter(list_college_top_1,Main_Table_sorted[list_columns[-1]].tail(bottom_rows))
+                                                mp.title(f"{list_columns[-1]} of bottom {bottom_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             elif graph_main == 3:
-                                                mp.plot(X=list_college_bottom, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title('')
-                                                mp.xlabel("")
-                                                mp.ylabel("")
+                                                mp.plot(list_college_top_1,Main_Table_sorted[list_columns[-1]].tail(bottom_rows))
+                                                mp.title(f"{list_columns[-1]} of bottom {bottom_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             else:
                                                 print("Invalid Choice")
@@ -199,22 +200,22 @@ while True:
                                                         y = Main_Table.loc[j, 'Name of College']
                                                         list_custom_rows.append(y)
                                             if graph_main == 1:
-                                                mp.bar(X=list_custom_rows, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel('')
-                                                mp.ylabel("")
+                                                mp.bar(list_custom_rows, Main_Table_sorted[list_columns[-1]])
+                                                mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             elif graph_main == 2:
-                                                mp.scatter(X=list_custom_rows, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel("")
-                                                mp.ylabel("")
+                                                mp.scatter(list_custom_rows, Main_Table_sorted[list_columns[-1]])
+                                                mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             elif graph_main == 3:
-                                                mp.plot(X=list_custom_rows, Y=Main_Table_sorted[list_columns[-1]])
-                                                mp.title("")
-                                                mp.xlabel("")
-                                                mp.ylabel("")
+                                                mp.plot(list_custom_rows, Main_Table_sorted[list_columns[-1]])
+                                                mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
+                                                mp.xlabel("Colleges")
+                                                mp.ylabel(list_columns[-1])
                                                 mp.show()
                                             else:
                                                 print("Invalid Choice")
