@@ -13,7 +13,7 @@ print("The given report consists of the following dataset:\n"
       "\t\t8.  Number of domains offered by a particular college \n"
       "\t\t9.  Location of the college\n"
       "\t\t10. Top companies that visited the college for recruitment \n\n")
-Main_Table = pd.read_csv("C:\\Users\ADMIN\Desktop\IP\List_colleges.csv")
+Main_Table = pd.read_csv(r"C:\Users\USER-6\Desktop\List_colleges.csv")
 Main_Table = Main_Table.drop("S. No.", axis=1)
 def Input(user, defined_range):
     try:
@@ -181,7 +181,7 @@ while True:
                                               "\t\t2, Scattered plot\n"
                                               "\t\t3. Line graph\n")
                                         print("****** Please enter the number of the choice of your wish ******\n\n")
-                                        graph_main = input("Which type of graph do you want to see : \n\n")
+                                        graph_main = input("Which type of graph do you want to see : ")
                                         graph_main = Input(graph_main, [1, 2, 3, 4, 5, 6])
                                         Main_Table_sorted = Main_Table.sort_values(by=list_columns[-1],ascending=True)
                                         if College_option == 1:
@@ -315,7 +315,7 @@ while True:
                           "\t\t 2. Scattered plot\n"
                           "\t\t 3. Line graph\n")
                     print("****** Please enter the number of the choice of your wish ******\n\n")
-                    graph_main_1 = input("Which type of graph do you want to see : \n\n")
+                    graph_main_1 = input("Which type of graph do you want to see : ")
                     graph_main_1 = Input(graph_main_1, [1, 2, 3])
                     Main_Table_sorted_new_1 = Main_Table.sort_values(by=List_columns_new[Column_command_2],ascending=True)
                     if College_option_1 == 1:
@@ -349,19 +349,23 @@ while True:
                         series_tail = Main_Table["Name of College"].tail(bottom_rows_new)
                         list_college_bottom_1 = series_tail.tolist()
                         if graph_main_1 == 1:
-                            mp.bar(bottom_rows_new,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tain(bottom_rows_new))
+                            mp.bar(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
                             mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
                             mp.xlabel("Colleges")
                             mp.ylabel(List_columns_new[Column_command_2 - 1])
                             mp.show()
                         elif graph_main_1 == 2:
-                            mp.scatter(bottom_rows_new,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tain(bottom_rows_new))
+                            x = Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new)
+                            Y = bottom_rows_new
+                            print(x)
+                            print(Y)
+                            mp.scatter(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
                             mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
                             mp.xlabel("Colleges")
                             mp.ylabel(List_columns_new[Column_command_2 - 1])
                             mp.show()
                         elif graph_main_1 == 3:
-                            mp.plot(bottom_rows_new,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tain(bottom_rows_new))
+                            mp.plot(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
                             mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
                             mp.xlabel("Colleges")
                             mp.ylabel(List_columns_new[Column_command_2 - 1])
@@ -468,27 +472,29 @@ while True:
                 else:
                     print("Please enter a valid choice\n")
     elif command_1 == 4:
+        location_list = []
         location_input = input("Please enter the location for which you want to search for a college : ")
         location_input_new = location_input.upper()
-        location_list = []
-        for i in range(len(Main_Table)):
-            if location_input_new in Main_Table.loc[i, 'Location']:
-                y = Main_Table.loc[i, 'Name of College']
-                location_list.append(y)
-        location_list_series = pd.Series(location_list)
-        print("The college at the location ", location_input_new, " are :-\n\n")
-        print(location_list_series, "\n\n")
+        if isinstance(location_input,str):
+            for i in range(len(Main_Table)):
+                if location_input_new in Main_Table.loc[i, 'Location']:
+                    y = Main_Table.loc[i, 'Name of College']
+                    location_list.append(y)
+            location_list_series = pd.Series(location_list)
+            print("The college at the location ", location_input_new, " are :-\n\n")
+            print(location_list_series, "\n\n")
     elif command_1 == 5:
         Company_input = input("Please enter the company for which you want to check the colleges : ")
         Company_input = Company_input.upper()
         list_company = []
-        for i in range(len(Main_Table)):
-            if Company_input in Main_Table.loc[i, 'Companies Visited'].split(', '):
-                x = Main_Table.loc[i, 'Name of College']
-                list_company.append(x)
-        list_company_series = pd.Series(list_company)
-        print("The company ", Company_input, " visited the following colleges :-\n\n")
-        print(list_company_series, "\n\n")
+        if isinstance(Company_input,str):
+            for i in range(len(Main_Table)):
+                if Company_input in Main_Table.loc[i, 'Companies Visited'].split(', '):
+                    x = Main_Table.loc[i, 'Name of College']
+                    list_company.append(x)
+            list_company_series = pd.Series(list_company)
+            print("The company ", Company_input, " visited the following colleges :-\n\n")
+            print(list_company_series, "\n\n")
     elif command_1 == 6:
         print("The full table is : \n")
         print(Main_Table)
