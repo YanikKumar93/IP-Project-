@@ -13,7 +13,7 @@ print("The given report consists of the following dataset:\n"
       "\t\t8.  Number of domains offered by a particular college \n"
       "\t\t9.  Location of the college\n"
       "\t\t10. Top companies that visited the college for recruitment \n\n")
-Main_Table = pd.read_csv(r"C:\Users\USER-6\Desktop\List_colleges.csv")
+Main_Table = pd.read_csv(r"C:\Users\ADMIN\Desktop\IP\List_colleges.csv")
 Main_Table = Main_Table.drop("S. No.", axis=1)
 def Input(user, defined_range):
     try:
@@ -318,11 +318,11 @@ while True:
                               "\t\t 3. Line graph\n")
                         print("****** Please enter the number of the choice of your wish ******\n\n")
                         graph_main_1 = input("Which type of graph do you want to see : ")
-                        graph_main_1 = Input(graph_main_1, [1, 2, 3])                       
+                        graph_main_1 = Input(graph_main_1, [1, 2, 3])
                         Main_Table_sorted_new_1 = Main_Table.sort_values(by=List_columns_new[Column_command_2],ascending=True)
                         if isinstance(graph_main_1,int):
-                                if College_option_1 == 1:
-                                top_rows_new = input("Please enter the rows from the top you want to opt for : ")
+                            if College_option_1 == 1:
+                                top_rows_new = input("Please enter the rows from the top you want to opt for (in range 1-200) : ")
                                 top_rows_new = Input(top_rows_new, range(1, 203))
                                 series = Main_Table["Name of College"].head(top_rows_new)
                                 list_college_top = series.tolist()
@@ -347,7 +347,7 @@ while True:
                                 else:
                                     print("Invalid Choice")
                             elif College_option_1 == 2:
-                                bottom_rows_new = input("Please enter the rows from the bottom you want to opt for :")
+                                bottom_rows_new = input("Please enter the rows from the bottom you want to opt for (in range 1-200) :")
                                 bottom_rows_new = Input(bottom_rows_new, range(1, 203))
                                 series_tail = Main_Table["Name of College"].tail(bottom_rows_new)
                                 list_college_bottom_1 = series_tail.tolist()
@@ -373,7 +373,7 @@ while True:
                                     print("Invalid Choice")
                             elif College_option_1 == 3:
                                 x_labels_1 = []
-                                x = input("Please enter the number of rows you want to opt for :")
+                                x = input("Please enter the number of rows you want to opt for (in range 1-200) :")
                                 custom_rows_1 = Input(x, range(1, 203))
                                 if isinstance(custom_rows_1,int):
                                     for i in range(custom_rows_1):
@@ -408,8 +408,8 @@ while True:
                                         print("Invalid Choice")
                                 else:
                                     print("Invalid choice")
-                        else:   
-                            print("Sorry !! But we are unable to form the graph of the following dataset")
+                    else:
+                        print("Sorry !! But we are unable to form the graph of the following dataset")
     elif command_1 == 3:
         while True:
             print("Which mathematical function do you want to perform :\n "
@@ -439,37 +439,38 @@ while True:
                 print("****** Please enter the number of the choice of your wish ****** \n\n")
                 Column_input = input("Please enter the number of the column you opt for:")
                 Column_input = Input(Column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-                List_columns = ["Highest Package (LPA)",
-                                "Domestic Package (LPA)",
-                                "International Package (LPA)",
-                                "Number of Males Placed",
-                                "Number of Females Placed",
-                                "Average Package Offered",
-                                "Job Placement Percentage",
-                                "Number of Domains Offered",
-                                "UG Placements",
-                                "PG Placements"]
-                Column = List_columns[Column_input - 1]
-                if Maths_func_input == 1:
-                    print("The sum of the values of ", Column, " is :\n")
-                    print(Main_Table[Column].sum(), "\n\n")
-                elif Maths_func_input == 2:
-                    print("The average of the values of ", Column, " is :\n")
-                    print(Main_Table[Column].mean(), "\n\n")
-                elif Maths_func_input == 3:
-                    print("The maximum of the values of ", Column, " is :\n")
-                    print(Main_Table[Column].max(), "\n\n")
-                elif Maths_func_input == 4:
-                    print("The minimum of the values of ", Column, " is :\n")
-                    print(Main_Table[Column].min(), "\n\n")
-                elif Maths_func_input == 5:
-                    print("The Median of the values of ", Column, " is :\n")
-                    print(Main_Table[Column].median(), "\n\n")
-                elif Maths_func_input == 6:
-                    print("The Mode of the values of ", Column, " is :\n")
-                    print(Main_Table[Column].mode(), "\n\n")
-                else:
-                    print("Please enter a valid choice\n")
+                if isinstance(Column_input,int):
+                    List_columns = ["Highest Package (LPA)",
+                                    "Domestic Package (LPA)",
+                                    "International Package (LPA)",
+                                    "Number of Males Placed",
+                                    "Number of Females Placed",
+                                    "Average Package Offered",
+                                    "Job Placement Percentage",
+                                    "Number of Domains Offered",
+                                    "UG Placements",
+                                    "PG Placements"]
+                    Column = List_columns[Column_input - 1]
+                    if Maths_func_input == 1:
+                        print("The sum of the values of ", Column, " is :\n")
+                        print(Main_Table[Column].sum(), "\n\n")
+                    elif Maths_func_input == 2:
+                        print("The average of the values of ", Column, " is :\n")
+                        print(Main_Table[Column].mean(), "\n\n")
+                    elif Maths_func_input == 3:
+                        print("The maximum of the values of ", Column, " is :\n")
+                        print(Main_Table[Column].max(), "\n\n")
+                    elif Maths_func_input == 4:
+                        print("The minimum of the values of ", Column, " is :\n")
+                        print(Main_Table[Column].min(), "\n\n")
+                    elif Maths_func_input == 5:
+                        print("The Median of the values of ", Column, " is :\n")
+                        print(Main_Table[Column].median(), "\n\n")
+                    elif Maths_func_input == 6:
+                        print("The Mode of the values of ", Column, " is :\n")
+                        print(Main_Table[Column].mode(), "\n\n")
+                    else:
+                        print("Please enter a valid choice\n")
     elif command_1 == 4:
         location_list = []
         location_input = input("Please enter the location for which you want to search for a college : ")
@@ -497,6 +498,7 @@ while True:
     elif command_1 == 6:
         print("The full table is : \n")
         print(Main_Table)
+        print("\n\n Hence the complete table is printed.")
     elif command_1 == 7:
         print("\n\n\n")
         print("Hereby we have come to an end of the analysis of the job placement in various colleges")
