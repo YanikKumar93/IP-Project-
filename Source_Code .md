@@ -119,7 +119,7 @@ while True:
                     else:
                         print("Please enter a valid name of the college\n")
                 elif command_2 == 2:
-                    Number_of_columns = input("Please enter the number of columns you want to see : ")
+                    Number_of_columns = input("Please enter the number of columns you want to see(in range 1-12) : ")
                     Number_of_columns_1 = Input(Number_of_columns, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
                     if isinstance(Number_of_columns_1, int):
                         print(Choice_offered)
@@ -172,7 +172,7 @@ while True:
                                         print("For which colleges do you want to see the graph :\n"
                                               "\t\t1.Top colleges\n"
                                               "\t\t2.Bottom most colleges\n"
-                                              "\t\t3.Customised (You have to input the name of college\n")
+                                              "\t\t3.Customised (You have to input the name of college)\n")
                                         print("****** The columns will be arranged in ascending order of your preferred row choice ******")
                                         College_option = input("Please enter the number of your choice :")
                                         College_option = Input(College_option, [1, 2, 3])
@@ -239,7 +239,7 @@ while True:
                                                     print("Invalid Choice")
                                             elif College_option == 3:
                                                 x_labels = []
-                                                x = input("Please enter the number of rows you want to opt for :")
+                                                x = input("Please enter the number of rows you want to opt for (in range 1-203) :")
                                                 custom_rows = Input(x, range(1, 203))
                                                 if isinstance(custom_rows,int):
                                                     for i in range(custom_rows):
@@ -248,9 +248,8 @@ while True:
                                                         x_labels.append(x_n_1)
                                                     y_values = []
                                                     for j in x_labels:
-                                                        row = Main_Table[Main_Table['Name of College'] == j]
-                                                        k = Main_Table.columns[column_input + 1]
-                                                        l_1 = Main_Table[k][row['Work No'].tolist()].tolist()
+                                                        row = Main_Table.loc[Main_Table['Name of College'] == j,list_columns[-1]].values[0]                     
+                                                        y_values.append(row)
                                                     if graph_main == 1:
                                                         mp.bar(x_labels, y_values)
                                                         mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
@@ -277,10 +276,10 @@ while True:
                                             pass
                                     elif graph_input == 2:
                                         print("Okay !!!!\n")
-                    elif command_2 == 3:
-                        break
-                    else:
-                        pass
+                elif command_2 == 3:
+                    break
+                else:
+                    pass
     elif command_1 == 2:
         while True:
             print(Choice_offered, "\t\t13. Back\n\n")
@@ -302,8 +301,9 @@ while True:
                 List_columns_selected = []
                 if Column_command_2 == 13:
                     break
-                List_columns_selected = List_columns_selected.append(List_columns_new[Column_command_2 - 1])
-                if Column_command_2 != 8 and Column_command_2 != 9:
+                List_columns_selected.append(List_columns_new[Column_command_2 - 1])
+                print(List_columns_selected)
+                if Column_command_2 != 8 or Column_command_2 != 9:
                     print("For which colleges do you want to see the graph :\n"
                           "\t\t1.Top colleges\n"
                           "\t\t2.Bottom most colleges\n"
@@ -319,7 +319,7 @@ while True:
                         print("****** Please enter the number of the choice of your wish ******\n\n")
                         graph_main_1 = input("Which type of graph do you want to see : ")
                         graph_main_1 = Input(graph_main_1, [1, 2, 3])
-                        Main_Table_sorted_new_1 = Main_Table.sort_values(by=List_columns_new[Column_command_2],ascending=True)
+                        Main_Table_sorted_new_1 = Main_Table.sort_values(by=List_columns_selected[-1],ascending=True)
                         if isinstance(graph_main_1,int):
                             if College_option_1 == 1:
                                 top_rows_new = input("Please enter the rows from the top you want to opt for (in range 1-200) : ")
@@ -329,19 +329,19 @@ while True:
                                 if isinstance(top_rows_new,int):
                                     if graph_main_1 == 1:
                                         mp.bar(list_college_top,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].head(top_rows_new))
-                                        mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
+                                        mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2 - 1])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(list_college_top,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].head(top_rows_new))
-                                        mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
+                                        mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2 - 1])
                                         mp.show()
                                     elif graph_main_1 == 3:
-                                        mp.plot(list_college_top,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].head(top_rows_new))
-                                        mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
+                                        mp.plot(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
+                                        mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2 - 1])
                                         mp.show()
@@ -355,19 +355,19 @@ while True:
                                 if isinstance(bottom_rows_new,int):
                                     if graph_main_1 == 1:
                                         mp.bar(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
-                                        mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
+                                        mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2 - 1])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
-                                        mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
+                                        mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2 - 1])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
-                                        mp.title("Graph of : Top colleges vs " + List_columns_new[Column_command_2 - 1])
+                                        mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2 - 1])
                                         mp.show()
@@ -383,26 +383,24 @@ while True:
                                         x_n_1 = x_n.upper()
                                         x_labels_1.append(x_n_1)
                                     y_values_1 = []
-                                    for j in x_labels:
-                                        row = Main_Table[Main_Table['Name of College'] == j]
-                                        k = Main_Table.columns[column_input + 1]
-                                        l_1 = Main_Table[k][row['Work No'].tolist()].tolist()
-                                        y_values_1.append(l_1[0])
+                                    for j in x_labels_1:
+                                        row = Main_Table.loc[Main_Table['Name of College'] == j,List_columns_selected[-1]].values[0]
+                                        y_values_1.append(row)
                                     if graph_main_1 == 1:
                                         mp.bar(x_labels_1,y_values_1)
-                                        mp.title(f"Graph of : User Selected College vs {List_columns_new[Column_command_2]}")
+                                        mp.title(f"Graph of :College vs {List_columns_new[Column_command_2]}")
                                         mp.xlabel("Colleges")
-                                        mp.label(List_columns_new[Column_command_2])
+                                        mp.ylabel(List_columns_new[Column_command_2])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(x_labels_1,y_values_1)
-                                        mp.title(f"Graph of : User Selected College vs {List_columns_new[Column_command_2]}")
+                                        mp.title(f"Graph of : College vs {List_columns_new[Column_command_2]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(x_labels_1,y_values_1)
-                                        mp.title(f"Graph of : User Selected College vs {List_columns_new[Column_command_2]}")
+                                        mp.title(f"Graph of : College vs {List_columns_new[Column_command_2]}")
                                         mp.xlabel("Colleges")
                                         mp.ylabel(List_columns_new[Column_command_2])
                                         mp.show()
