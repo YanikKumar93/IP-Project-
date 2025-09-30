@@ -328,22 +328,22 @@ while True:
                                 list_college_top = series.tolist()
                                 if isinstance(top_rows_new,int):
                                     if graph_main_1 == 1:
-                                        mp.bar(list_college_top,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].head(top_rows_new))
+                                        mp.bar(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2 - 1])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
-                                        mp.scatter(list_college_top,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].head(top_rows_new))
+                                        mp.scatter(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2 - 1])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2 - 1])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
                                         print("Invalid Choice")
@@ -354,22 +354,22 @@ while True:
                                 list_college_bottom_1 = series_tail.tolist()
                                 if isinstance(bottom_rows_new,int):
                                     if graph_main_1 == 1:
-                                        mp.bar(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
+                                        mp.bar(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_selected[-1]].tail(bottom_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2 - 1])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
-                                        mp.scatter(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
+                                        mp.scatter(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_selected[-1]].tail(bottom_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2 - 1])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 3:
-                                        mp.plot(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_new[Column_command_2 - 1]].tail(bottom_rows_new))
+                                        mp.plot(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_selected[-1]].tail(bottom_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2 - 1])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
                                         print("Invalid Choice")
@@ -388,21 +388,21 @@ while True:
                                         y_values_1.append(row)
                                     if graph_main_1 == 1:
                                         mp.bar(x_labels_1,y_values_1)
-                                        mp.title(f"Graph of :College vs {List_columns_new[Column_command_2]}")
+                                        mp.title(f"Graph of :College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(x_labels_1,y_values_1)
-                                        mp.title(f"Graph of : College vs {List_columns_new[Column_command_2]}")
+                                        mp.title(f"Graph of : College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(x_labels_1,y_values_1)
-                                        mp.title(f"Graph of : College vs {List_columns_new[Column_command_2]}")
+                                        mp.title(f"Graph of : College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
-                                        mp.ylabel(List_columns_new[Column_command_2])
+                                        mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
                                         print("Invalid Choice")
