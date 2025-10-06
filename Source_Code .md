@@ -495,7 +495,7 @@ while True:
             print(f"✅ Company '{Company_input}' visited {len(list_company)} College(s):")
             print(list_company_series, "\n\n")
     elif command_1 == 6:
-        print("\n" + "=" * 25 + " FULL DATA TABLE 🙂 " + "=" * 25)
+        print("\n" + "=" * 25 + "🙂 FULL DATA TABLE 🙂 " + "=" * 25)
         print(Main_Table)
         print("=" * 65 + "\n")
     elif command_1 == 7:
