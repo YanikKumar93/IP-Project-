@@ -13,7 +13,7 @@ print("The given report consists of the following dataset:\n"
       "\t\t8.  Number of domains offered by a particular college \n"
       "\t\t9.  Location of the college\n"
       "\t\t10. Top companies that visited the college for recruitment \n\n")
-Main_Table = pd.read_csv(r"C:\Users\ADMIN\Desktop\IP\List_colleges.csv")
+Main_Table = pd.read_csv(r"C:\Users\USER-9\Desktop\List_colleges.csv")
 Main_Table = Main_Table.drop("S. No.", axis=1)
 def Input(user, defined_range):
     try:
@@ -105,9 +105,15 @@ while True:
                                             list_columns.append("UG Placements")
                                         elif column_input == 12:
                                             list_columns.append("PG Placements")
+                                        else:
+                                            print("Please enter a valid choice from the given options\n")
+                                            break
                                     else:
                                         print("Please enter a valid choice")
                                         continue
+                            elif graph_input == 2:
+                                print("Thanks for the confirmation !!!")
+                                break
                         values = []
                         for i in list_columns:
                             values.append(Main_Table.loc[Main_Table["Name of College"] == Name_of_college_renewed, i].values.squeeze())
@@ -121,6 +127,7 @@ while True:
                 elif command_2 == 2:
                     Number_of_columns = input("Please enter the number of columns you want to see(in range 1-12) : ")
                     Number_of_columns_1 = Input(Number_of_columns, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+                    dict_column = {"a":"Name of  College"}
                     if isinstance(Number_of_columns_1, int):
                         print(Choice_offered)
                         list_columns = ["Name of College"]
@@ -129,35 +136,35 @@ while True:
                             column_input = Input(column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
                             if isinstance(column_input, int):
                                 if column_input == 1:
-                                    list_columns.append("Highest Package (LPA)")
+                                    dict_column[column_input]="Highest Package (LPA)"
                                 elif column_input == 2:
-                                    list_columns.append("Domestic Package (LPA)")
+                                    dict_column[column_input]="Domestic Package (LPA)"
                                 elif column_input == 3:
-                                    list_columns.append("International Package (LPA)")
+                                    dict_column[column_input]="International Package (LPA)"
                                 elif column_input == 4:
-                                    list_columns.append("Number of Males Placed")
+                                    dict_column[column_input]="Number of Males Placed"
                                 elif column_input == 5:
-                                    list_columns.append("Number of Females Placed")
+                                    dict_column[column_input]="Number of Females Placed"
                                 elif column_input == 6:
-                                    list_columns.append("Average Package Offered")
+                                    dict_column[column_input]="Average Package Offered"
                                 elif column_input == 7:
-                                    list_columns.append("Job Placement Percentage")
+                                    dict_column[column_input]="Job Placement Percentage"
                                 elif column_input == 8:
-                                    list_columns.append("Location")
+                                    dict_column[column_input]="Location"
                                 elif column_input == 9:
-                                    list_columns.append("Companies Visited")
+                                    dict_column[column_input]="Companies Visited"
                                 elif column_input == 10:
-                                    list_columns.append("Number of Domains Offered")
+                                    dict_column[column_input]="Number of Domains Offered"
                                 elif column_input == 11:
-                                    list_columns.append("UG Placements")
+                                    dict_column[column_input]="UG Placements"
                                 elif column_input == 12:
-                                    list_columns.append("PG Placements")
+                                    dict_column[column_input]="PG Placements"
                                 else:
                                     print("Please enter a valid choice")
                                     continue
-                        print("The choosen group of columns are :", list_columns, " \n\n")
                         pd.set_option('display.max_columns', None)
-                        print(Main_Table[list_columns])
+                        values=list(dict_column.values())
+                        print(Main_Table[values])
                         if Number_of_columns_1 == 1:
                             if column_input in [1, 2, 3, 4, 5, 6, 7, 10, 11, 12]:
                                 print("Do you want see the graph of the selected: \n"
@@ -194,12 +201,14 @@ while True:
                                                     mp.bar(list_college_top_1,Main_Table_sorted[list_columns[-1]].head(top_rows))
                                                     mp.title(f"{list_columns[-1]} of top {top_rows} Colleges")
                                                     mp.xlabel("Colleges")
+                                                    mp.xticks(rotation=90)
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 elif graph_main == 2:
                                                     mp.scatter(list_college_top_1,Main_Table_sorted[list_columns[-1]].head(top_rows))
                                                     mp.title(f"{list_columns[-1]} of top {top_rows} Colleges")
                                                     mp.xlabel("Colleges")
+                                                    mp.xticks(rotation=90)
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 elif graph_main == 3:
@@ -207,6 +216,7 @@ while True:
                                                             Main_Table_sorted[list_columns[-1]].head(top_rows))
                                                     mp.title(f"{list_columns[-1]} of top {top_rows} Colleges")
                                                     mp.xlabel("Colleges")
+                                                    mp.xticks(rotation=90)
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 else:
@@ -222,17 +232,20 @@ while True:
                                                     mp.title(f"{list_columns[-1]} of bottom {bottom_rows} Colleges")
                                                     mp.xlabel("Colleges")
                                                     mp.ylabel(list_columns[-1])
+                                                    mp.xticks(rotation=90)
                                                     mp.show()
                                                 elif graph_main == 2:
                                                     mp.scatter(list_college_bottom,Main_Table_sorted[list_columns[-1]].tail(bottom_rows))
                                                     mp.title(f"{list_columns[-1]} of bottom {bottom_rows} Colleges")
                                                     mp.xlabel("Colleges")
+                                                    mp.xticks(rotation=90)
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 elif graph_main == 3:
                                                     mp.plot(list_college_bottom,Main_Table_sorted[list_columns[-1]].tail(bottom_rows))
                                                     mp.title(f"{list_columns[-1]} of bottom {bottom_rows} Colleges")
                                                     mp.xlabel("Colleges")
+                                                    mp.xticks(rotation=90)
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 else:
@@ -248,24 +261,27 @@ while True:
                                                         x_labels.append(x_n_1)
                                                     y_values = []
                                                     for j in x_labels:
-                                                        row = Main_Table.loc[Main_Table['Name of College'] == j,list_columns[-1]].values[0]                     
+                                                        row = Main_Table.loc[Main_Table['Name of College'] == j,list_columns[-1]].values[0]
                                                         y_values.append(row)
                                                     if graph_main == 1:
                                                         mp.bar(x_labels, y_values)
                                                         mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
                                                         mp.xlabel("Colleges")
                                                         mp.ylabel(list_columns[-1])
+                                                        mp.xticks(rotation=90)
                                                         mp.show()
                                                     elif graph_main == 2:
                                                         mp.scatter(x_labels, y_values)
                                                         mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
                                                         mp.xlabel("Colleges")
+                                                        mp.xticks(rotation=90)
                                                         mp.ylabel(list_columns[-1])
                                                         mp.show()
                                                     elif graph_main == 3:
                                                         mp.plot(x_labels, y_values)
                                                         mp.title(f"{list_columns[-1]} of {custom_rows} Colleges")
                                                         mp.xlabel("Colleges")
+                                                        mp.xticks(rotation=90)
                                                         mp.ylabel(list_columns[-1])
                                                         mp.show()
                                                     else:
@@ -331,18 +347,21 @@ while True:
                                         mp.bar(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(list_college_top,Main_Table_sorted_new_1[List_columns_selected[-1]].head(top_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
@@ -357,18 +376,21 @@ while True:
                                         mp.bar(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_selected[-1]].tail(bottom_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_selected[-1]].tail(bottom_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(list_college_bottom_1,Main_Table_sorted_new_1[List_columns_selected[-1]].tail(bottom_rows_new))
                                         mp.title(f"Graph of : Top colleges vs {List_columns_new[Column_command_2 - 1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
@@ -390,18 +412,21 @@ while True:
                                         mp.bar(x_labels_1,y_values_1)
                                         mp.title(f"Graph of :College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
                                         mp.scatter(x_labels_1,y_values_1)
                                         mp.title(f"Graph of : College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 3:
                                         mp.plot(x_labels_1,y_values_1)
                                         mp.title(f"Graph of : College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
+                                        mp.xticks(rotation=90)
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
