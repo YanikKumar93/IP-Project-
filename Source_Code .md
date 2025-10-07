@@ -1,8 +1,5 @@
 import matplotlib.pyplot as mp
 import pandas as pd
-# ----------------------------------------------------
-# PANDAS UI IMPROVEMENTS: Set display options for cleaner table output
-# ----------------------------------------------------
 pd.set_option('display.max_rows', 20)  # Show a maximum of 20 rows
 pd.set_option('display.max_columns', 15)  # Show all columns (assuming max 15)
 pd.set_option('display.width', 1000)  # Set console width for better alignment
@@ -133,7 +130,7 @@ while True:
                             else:
                                 continue
                         pd.set_option('display.max_columns', None)
-                        print("\n" + "=" * 20 + " SELECTED COLUMNS DATA " + "=" * 20)
+                        print("\n" + "=" * 20 + "✅ SELECTED COLUMNS DATA ✅" + "=" * 20)
                         print(Main_Table[list_columns_1])
                         print("=" * 63 + "\n")
                         if Number_of_columns_1 == 1:
@@ -191,7 +188,7 @@ while True:
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 else:
-                                                    print("❌ Invalid Choice")
+                                                    print("⚠️ Invalid Choice ⚠️")
                                             elif College_option == 2:
                                                 bottom_rows = input(
                                                     "Please enter the no. of rows from the bottom you want to opt for :")
@@ -220,7 +217,7 @@ while True:
                                                     mp.ylabel(list_columns[-1])
                                                     mp.show()
                                                 else:
-                                                    print("❌ Invalid Choice")
+                                                    print("⚠️ Invalid Choice ⚠️")
                                             elif College_option == 3:
                                                 x_labels = []
                                                 x = input("Please enter the number of rows you want to opt for (in range 1-203) :")
@@ -256,13 +253,13 @@ while True:
                                                         mp.ylabel(list_columns[-1])
                                                         mp.show()
                                                     else:
-                                                        print("❌ Invalid Choice")
+                                                        print("⚠️ Invalid Choice ⚠️")
                                                 else:
-                                                    print("❌ Invalid choice")
+                                                    print("⚠️ Invalid choice ⚠️")
                                         else:
                                             pass
                                     elif graph_input == 2:
-                                        print("Okay !!!!\n")
+                                        print("🙂 Okay !!!! 🙂\n")
                 elif command_2 == 3:
                     break
                 else:
@@ -337,7 +334,7 @@ while True:
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
-                                        print("❌ Invalid Choice")
+                                        print("⚠️ Invalid Choice ⚠️")
                             elif College_option_1 == 2:
                                 bottom_rows_new = input("Please enter the rows from the bottom you want to opt for (in range 1-200) :")
                                 bottom_rows_new = Input(bottom_rows_new, range(1, 203))
@@ -366,7 +363,7 @@ while True:
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
-                                        print("❌ Invalid Choice")
+                                        print("⚠️ Invalid Choice ⚠️")
                             elif College_option_1 == 3:
                                 x_labels_1 = []
                                 x = input("Please enter the number of rows you want to opt for (in range 1-200) :")
@@ -402,14 +399,14 @@ while True:
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     else:
-                                        print("❌ Invalid Choice")
+                                        print("⚠️ Invalid Choice ⚠️")
                                 else:
-                                    print("❌ Invalid choice")
+                                    print("⚠️ Invalid choice ⚠️")
                     else:
                         print("Sorry !! But we are unable to form the graph of the following dataset 😔")
     elif command_1 == 3:
         while True:
-            print("\n" + "-" * 25 + "➗ MATHEMATICAL OPTIONS ➖" + "-" * 25)
+            print("\n" + "-" * 25 + "➗✖️ MATHEMATICAL OPTIONS ➕➖" + "-" * 25)
             print("\t\t1. Sum of values of a column\n"
                   "\t\t2. Average of a column\n"
                   "\t\t3. Maximum value of a column\n"
@@ -449,25 +446,25 @@ while True:
                                     "PG Placements"]
                     Column = List_columns[Column_input - 1]
                     if Maths_func_input == 1:
-                        print("The sum ➕ of the values of ", Column, " is :\n")
+                        print("-" * 25 + "The sum of the values of ", Column, " is :" + "-" * 25+ "\n")
                         print(Main_Table[Column].sum(), "\n\n")
                     elif Maths_func_input == 2:
-                        print("The average of the values of ", Column, " is :\n")
+                        print("-" * 25 + "The average of the values of ", Column, " is :"+"-" * 25 + "\n")
                         print(Main_Table[Column].mean(), "\n\n")
                     elif Maths_func_input == 3:
-                        print("The maximum of the values of ", Column, " is :\n")
+                        print("-" * 25 + "The maximum of the values of ", Column, " is :"+ "-" * 25 + "\n")
                         print(Main_Table[Column].max(), "\n\n")
                     elif Maths_func_input == 4:
-                        print("The minimum of the values of ", Column, " is :\n")
+                        print("-" * 25 + "The minimum of the values of ", Column, " is :" + "-" * 25+"\n")
                         print(Main_Table[Column].min(), "\n\n")
                     elif Maths_func_input == 5:
-                        print("The Median of the values of ", Column, " is :\n")
+                        print("-" * 25 + "The Median of the values of ", Column, " is :" + "-" * 25 + "\n")
                         print(Main_Table[Column].median(), "\n\n")
                     elif Maths_func_input == 6:
-                        print("The Mode of the values of ", Column, " is :\n")
+                        print("-" * 25+"The Mode of the values of ", Column, " is :"+"-" * 25+"\n")
                         print(Main_Table[Column].mode(), "\n\n")
                     else:
-                        print("Please enter a valid choice\n")
+                        print("⚠️ Please enter a valid choice ⚠️\n")
     elif command_1 == 4:
         print("\n" + "-" * 25 + "📍 SEARCHING COLLEGE WITH LOCATION 📍" + "-" * 25)
         location_list = []
@@ -483,7 +480,7 @@ while True:
             print(location_list_series, "\n\n")
     elif command_1 == 5:
         print("\n" + "-" * 25 + "💼 SEARCHING COLLEGE WITH COMPANY 💼" + "-" * 25)
-        Company_input = input("Please enter the company 💼 for which you want to check the colleges : ")
+        Company_input = input("Please enter the company for which you want to check the colleges : ")
         Company_input = Company_input.upper()
         list_company = []
         if isinstance(Company_input,str):
@@ -493,6 +490,7 @@ while True:
                     list_company.append(x)
             list_company_series = pd.Series(list_company)
             print(f"✅ Company '{Company_input}' visited {len(list_company)} College(s):")
+            print("-" * 75)
             print(list_company_series, "\n\n")
     elif command_1 == 6:
         print("\n" + "=" * 25 + "🙂 FULL DATA TABLE 🙂 " + "=" * 25)
@@ -500,6 +498,7 @@ while True:
         print("=" * 65 + "\n")
     elif command_1 == 7:
         print("\n" + "=" * 70)
+        print("🙏" * 20)
         print("End of analysis. Thank you for using the report analysis programme!")
         print("This report is created by Aditi and Yanik, Class XII A.")
         print("🙏"*20)
