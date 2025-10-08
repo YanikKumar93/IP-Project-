@@ -69,7 +69,7 @@ while True:
                     Name_of_college = input("Please enter the name of the college : ")
                     Name_of_college_renewed = Name_of_college.upper()
                     if Name_of_college_renewed in Main_Table["Name of College"].values:
-                        print("\n" + "*" * 20 + "The details of the college ", Name_of_college, + "*" * 20)
+                        print("\n" + "*" * 20 + "The details of the college ", Name_of_college + "*" * 20)
                         pd.set_option('display.max_columns', None)
                         print(Main_Table[Main_Table["Name of College"] == Name_of_college_renewed], "\n")
                         print("*" * 55 + "\n")
@@ -81,12 +81,12 @@ while True:
                         graph_input = Input(graph_input, [1, 2])
                         if isinstance(graph_input, int):
                             if graph_input == 1:
-                                print("Thanks for the confirmation ")
-                                Number_of_columns = int(input("No. of columns you want to see"))
+                                print("\nThanks for the confirmation !!!!\n")
+                                Number_of_columns = int(input("No. of columns you want to see (Range 1-12):"))
                                 list_columns = []
                                 limit_1 = 0
                                 while limit_1 < Number_of_columns:
-                                    column_input = input(f"Please enter your choice of column {i + 1} :")
+                                    column_input = input(f"Please enter your choice of column {limit_1 + 1} :")
                                     column_input = Input(column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
                                     if isinstance(column_input, int):
                                         if Main_Table.columns[column_input + 1] not in list_columns:
@@ -103,7 +103,7 @@ while True:
                         values = []
                         for i in list_columns:
                             values.append(Main_Table.loc[Main_Table["Name of College"] == Name_of_college_renewed, i].values.squeeze())
-                        mp.bar(list_columns, 
+                        mp.bar(list_columns,
                                values,
                                color = 'k',edgecolor ='w' ,alpha =0.5 ,linewidth =2 )
                         mp.title(Name_of_college)
@@ -155,7 +155,7 @@ while True:
                                         College_option = Input(College_option, [1, 2, 3])
                                         print("Which type of graph do you want see : \n"
                                               "\t\t1. Bar graph 📊\n"
-                                              "\t\t2, Scattered plot\n"
+                                              "\t\t2. Scattered plot\n"
                                               "\t\t3. Line graph 📈\n")
                                         print("****** Please enter the number of the choice of your wish ******\n\n")
                                         graph_main = input("Which type of graph do you want to see : ")
@@ -406,10 +406,16 @@ while True:
                                 x = input("Please enter the number of rows you want to opt for (in range 1-200) :")
                                 custom_rows_1 = Input(x, range(1, 203))
                                 if isinstance(custom_rows_1,int):
-                                    for i in range(custom_rows_1):
-                                        x_n = input("Please enter the name of the college : ")
+                                    college_1 = 0
+                                    while college_1 < custom_rows_1:
+                                        x_n = input(f"Please enter the name of the college {college_1 + 1} : ")
                                         x_n_1 = x_n.upper()
-                                        x_labels_1.append(x_n_1)
+                                        if x_n_1 in Main_Table["Name of College"].values:
+                                            x_labels_1.append(x_n_1)
+                                            college_1 += 1
+                                        else:
+                                            print("⚠️ Please enter a valid college name ⚠️\n")
+                                            continue
                                     y_values_1 = []
                                     for j in x_labels_1:
                                         row = Main_Table.loc[Main_Table['Name of College'] == j,List_columns_selected[-1]].values[0]
@@ -536,15 +542,15 @@ while True:
             print("-" * 75)
             print(list_company_series, "\n\n")
     elif command_1 == 6:
-        print("\n" + "=" * 25 + "🙂 FULL DATA TABLE 🙂 " + "=" * 25)
+        print("\n" + "=" * 25 + "🙂 FULL TABLE DATA 🙂 " + "=" * 25)
         print(Main_Table)
         print("=" * 65 + "\n")
     elif command_1 == 7:
         print("\n" + "=" * 70)
-        print("🙏" * 20)
+        print(" "*10 + "🙏" * 20)
         print("End of analysis. Thank you for using the report analysis programme!")
         print("This report is created by Aditi and Yanik, Class XII A.")
-        print("🙏"*20)
+        print(" "*10 + "🙏" * 20)
         print("=" * 70)
         break
 # Additional commands used :
