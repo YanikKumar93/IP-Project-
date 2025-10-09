@@ -19,7 +19,7 @@ print("\nThe given report consists of the following dataset features:\n"
       "\t9.  College Location\n"
       "\t10. Top companies that visited\n")
 print("-" * 70)
-Main_Table = pd.read_csv(r"C:\Users\ADMIN\Desktop\IP\List_colleges.csv")
+Main_Table = pd.read_csv(r"C:\Users\USER-9\Desktop\List_colleges.csv")
 Main_Table = Main_Table.drop("S. No.", axis=1)
 def Input(user, defined_range):
     try:
@@ -82,34 +82,42 @@ while True:
                         if isinstance(graph_input, int):
                             if graph_input == 1:
                                 print("\nThanks for the confirmation !!!!\n")
-                                Number_of_columns = int(input("No. of columns you want to see (Range 1-12):"))
-                                list_columns = []
-                                limit_1 = 0
-                                while limit_1 < Number_of_columns:
-                                    column_input = input(f"Please enter your choice of column {limit_1 + 1} :")
-                                    column_input = Input(column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
-                                    if isinstance(column_input, int):
-                                        if Main_Table.columns[column_input + 1] not in list_columns:
-                                            list_columns.append(Main_Table.columns[column_input + 1])
-                                            limit_1 += 1
+                                print(Choice_offered)
+                                Number_of_columns = (input("No. of columns you want to see (Range 1-12):"))
+                                if isinstance(Number_of_columns, int):
+                                    list_columns = []
+                                    limit_1 = 0
+                                    while limit_1 < Number_of_columns:
+                                        column_input = input(f"Please enter your choice of column {limit_1 + 1} :")
+                                        column_input = Input(column_input, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+                                        if isinstance(column_input, int):
+                                            if Main_Table.columns[column_input + 1] not in list_columns:
+                                                list_columns.append(Main_Table.columns[column_input + 1])
+                                                limit_1 += 1
+                                            else:
+                                                print(f"⚠️'{Main_Table.columns[column_input + 1]}'already selected.Please choose a different column.")
+                                                continue
                                         else:
-                                            print(f"⚠️'{Main_Table.columns[column_input + 1]}'already selected.Please choose a different column.")
+                                            print("⚠️ Please enter a valid integer choice ⚠️\n")
                                             continue
-                                    else:
-                                        continue
-                            elif graph_input == 2:
-                                print("Thanks for the confirmation !!!")
-                                break
-                        values = []
-                        for i in list_columns:
-                            values.append(Main_Table.loc[Main_Table["Name of College"] == Name_of_college_renewed, i].values.squeeze())
-                        mp.bar(list_columns,
-                               values,
-                               color = 'k',edgecolor ='w' ,alpha =0.5 ,linewidth =2 )
-                        mp.title(Name_of_college)
-                        mp.xlabel("Data")
-                        mp.ylabel("Values")
-                        mp.show()
+                                        values = []
+                                        for i in list_columns:
+                                            values.append(Main_Table.loc[Main_Table["Name of College"] == Name_of_college_renewed, i].values.squeeze())
+                                        mp.bar(list_columns,values,
+                                               color='k', edgecolor='w', alpha=0.5, linewidth=2)
+                                        mp.title(Name_of_college)
+                                        mp.xlabel("Data")
+                                        mp.xticks(rotation=90)
+                                        mp.ylabel("Values")
+                                        mp.show()
+                                elif graph_input == 2:
+                                    print("Thanks for the confirmation !!!")
+                                    break
+                                else:
+                                    print("\n ⚠️ Please enter a valid integer choice ⚠️\n")
+                                    continue
+                        else:
+                            print("\n ⚠️ Please enter a valid integer choice ⚠️\n")
                     else:
                         print(f"❌ College '{Name_of_college}' not found.\n")
                 elif command_2 == 2:
@@ -430,9 +438,7 @@ while True:
                                         mp.ylabel(List_columns_selected[-1])
                                         mp.show()
                                     elif graph_main_1 == 2:
-                                        mp.scatter(x_labels_1,
-                                                   y_values_1,
-                                                   color = 'p',alpha =0.5 ,marker =2)
+                                        mp.scatter(x_labels_1,y_values_1,color = 'c',alpha =0.5 ,marker =2)
                                         mp.title(f"Graph of : College vs {List_columns_selected[-1]}")
                                         mp.xlabel("Colleges")
                                         mp.xticks(rotation=90)
@@ -517,7 +523,7 @@ while True:
     elif command_1 == 4:
         print("\n" + "-" * 25 + "📍 SEARCHING COLLEGE WITH LOCATION 📍" + "-" * 25)
         location_list = []
-        location_input = input("Please enter the location 📍 for which you want to search for a college : ")
+        location_input = input("\nPlease enter the location for which you want to search for a college : ")
         location_input_new = location_input.upper()
         if isinstance(location_input,str):
             for i in range(len(Main_Table)):
